@@ -3,5 +3,5 @@
  */
 export default class Node{
     userInfo:any = null;
-    token:string = '';
+    token:string = '用户的token';
 }

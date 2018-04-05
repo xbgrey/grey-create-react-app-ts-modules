@@ -3,7 +3,7 @@ import Button from 'antd/lib/button';
 import PageBasic from 'src/frame/page/PageBasic';
 import IPropsBasic from 'src/frame/page/IPropsBasic'
 import RootState from './RootState';
-import Action from './Action';
+import action from './action';
 import ReduxState from 'src/redux/ReduxState';
 import { connect } from 'src/redux';
 import './index.scss';
@@ -16,11 +16,6 @@ class Home extends PageBasic<RootState, IProps> {
     state:State = new State();
 
     /**
-     * 动作对象
-     */
-    private action:Action = new Action();
-
-    /**
      * 构造函数
      */
     constructor(props:IProps) {
@@ -31,9 +26,9 @@ class Home extends PageBasic<RootState, IProps> {
     render() {
         return (
             <div className="App">
-                <Button onClick={this.action.fnSubmit} >{this.rootState.a}</Button>
-                <Button >{this.props.token}</Button>
-                <Button >{this.state.c}</Button>
+                <Button onClick={action.fnSubmit} >{this.rootState.a}</Button>
+                <Button onClick={action.fnSubmit} >{this.props.token}</Button>
+                <Button onClick={action.fnSubmit} >{this.state.c}</Button>
             </div>
         );
     }
