@@ -1,15 +1,15 @@
 import * as React from 'react';
-import Button from 'antd/lib/button';
-import './App.scss';
+// import LocaleProvider from 'antd/lib/locale-provider';
+// import zhCN from 'antd/lib/locale-provider/zh_CN'
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Button type="primary">Button</Button>
-      </div>
-    );
-  }
+class App extends React.PureComponent {
+    render() {
+        return (
+            <div>
+                1231
+            </div>
+        );
+    }
 }
 
 export default App;
