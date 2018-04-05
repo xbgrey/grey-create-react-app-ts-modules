@@ -1,16 +1,15 @@
 import * as React from 'react';
-import Button from 'antd/lib/button';
-import Table from 'antd/lib/table';
-import Card from 'antd/lib/card';
-import PageBasic from 'src/frame/page/PageBasic';
-import IPropsBasic from 'src/frame/page/IPropsBasic'
-import ReduxState from 'src/redux/ReduxState';
-import { connect } from 'src/redux';
+import { PageBasic, IPropsBasic } from 'src/frame/page';
+import { connect, ReduxState } from 'src/redux';
 import HomeState from './Home.State';
 import HomeAction from './Home.Action';
 import HomeConfig from './Home.Config';
-import UIDemo from './UI.Demo';
 import './index.scss';
+
+import UIDemo from './UI.Demo';
+import Button from 'antd/lib/button';
+import Table from 'antd/lib/table';
+import Card from 'antd/lib/card';
 
 const dataSource = [{
     key: '1',
