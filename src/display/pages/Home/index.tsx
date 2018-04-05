@@ -8,7 +8,7 @@ import ReduxState from 'src/redux/ReduxState';
 import { connect } from 'src/redux';
 import './index.scss';
 
-class Home extends PageBasic<RootState, IProps, State> {
+class Home extends PageBasic<RootState, IProps> {
 
     /**
      * 组建状态
