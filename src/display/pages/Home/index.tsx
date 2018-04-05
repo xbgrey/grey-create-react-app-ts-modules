@@ -6,7 +6,7 @@ import HomeAction from './Home.Action';
 import HomeConfig from './Home.Config';
 import './index.scss';
 
-import UIDemo from './UI.Demo';
+import UIComponents from './UI.Components';
 import Button from 'antd/lib/button';
 import Table from 'antd/lib/table';
 import Card from 'antd/lib/card';
@@ -45,7 +45,7 @@ class Home extends PageBasic<HomeState, IProps> {
                 <Button onClick={HomeAction.fnSubmit} >{this.props.token}</Button>
                 <Button onClick={HomeAction.fnSubmit} style={{marginBottom:20}} >{this.state.c}</Button>
                 <Table dataSource={dataSource} columns={HomeConfig.columns} />
-                <UIDemo/>
+                <UIComponents/>
             </Card>
         );
     }
