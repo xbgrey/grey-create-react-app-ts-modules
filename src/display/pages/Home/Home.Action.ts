@@ -1,7 +1,7 @@
 import ActionBasic from 'src/frame/page/ActionBasic';
-import RootState from './RootState';
+import RootState from './Home.State';
 
-class Action extends ActionBasic<RootState>{
+class ActionHome extends ActionBasic<RootState>{
 
     /** 发送消息 */
     public fnSubmit = ():void=>{
@@ -10,4 +10,4 @@ class Action extends ActionBasic<RootState>{
     }
 }
 
-export default new Action();
+export default new ActionHome();
