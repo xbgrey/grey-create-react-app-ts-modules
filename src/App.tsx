@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'antd';
+import Button from 'antd/lib/button';
 import './App.scss';
 
 class App extends React.Component {
