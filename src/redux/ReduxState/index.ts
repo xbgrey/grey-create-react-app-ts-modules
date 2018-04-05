@@ -14,11 +14,11 @@ export default class ReduxState {
     //  */
     // env = reducers.Env.reducer;
 
-    // /**
-    //  * 当前的页面数据
-    //  * @type {*}
-    //  */
-    // currentPage = reducers.CurrentPage.reducer;
+    /**
+     * 当前的页面数据
+     * @type {*}
+     */
+    public currentPage: any = reducers.currentPage.reducer;
 
     // /**
     //  * 配置数据

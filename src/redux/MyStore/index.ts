@@ -1,4 +1,5 @@
 import { createStore, combineReducers, Store } from 'redux';
+import { EmptyActionCreator } from 'redux-act';
 import ReduxState from '../ReduxState';
 
 export default class MyStore {
@@ -26,10 +27,8 @@ export default class MyStore {
      * @param type 动作类型
      * @param  value 动作数据
      */
-    public dispatch = (type: any, value: any) => {
-        if (typeof type === 'function') {
-            this._store.dispatch(type(value));
-        }
+    public dispatch = (type: EmptyActionCreator, value: any) => {
+        this._store.dispatch(type.call(this, value));
     }
 
     /**
