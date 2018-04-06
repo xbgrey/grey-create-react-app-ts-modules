@@ -24,6 +24,6 @@ export default class ReduxState {
     /**
      * 配置数据
      */
-    public config: ConfigINode = reducers.config.reducer;
+    public config: ConfigINode = reducers.config.reducer as any;
 }
 

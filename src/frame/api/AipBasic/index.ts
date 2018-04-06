@@ -22,7 +22,7 @@ export default abstract class AipBasic {
      * 请求头（全局）
      * @returns {string}
      */
-    private getDomainGlobal(): string {
+    private getDomainGlobal = (): string => {
         const rootConfig = MyStore.instance.getState().config.rootConfig;
         switch (MyStore.instance.getState().env.NODE_ENV) {
             case NodeEnvType.开发环境:
@@ -35,36 +35,36 @@ export default abstract class AipBasic {
                 console.error('[api]环境变量异常', MyStore.instance.getState().env);
                 return '';
         }
-    }
+    };
 
     /**
      * 请求头（当前公司）
      * @returns {string}
      */
-    private getDomainZone() {
+    private getDomainZone = () => {
         return 'xxxx';
-    }
+    };
 
     /**
      * 提示消息管理
      * @param request 请求消息头
      * @param message 发送的消息
      */
-    private fnShowMessage(request: ApiRequest, message: string) {
+    private fnShowMessage = (request: ApiRequest, message: string) => {
         if (request.isShowModal === false) {
             return null;
         }
-    }
+    };
 
     /**
      * 向服务器发送一个请求
      * @param request {ApiRequest} 一个请求
      * @param domain {string} 请求地址头
      */
-    private fnCall(request: ApiRequest, domain: string): Promise<ApiResponse> {
+    private fnCall = (request: ApiRequest, domain: string): Promise<ApiResponse> => {
         return new Promise((resolve: (value: ApiResponse) => void) => {
             /** 消息头 */
-            const options: any = this.getOptions(request.options)
+            const options: any = this.getOptions(request.options);
             return Superagent.fnCall(request.type, domain + request.uri, (er, body) => {
                 /** 返回数据 */
                 const info: ApiResponse = new ApiResponse();
@@ -83,14 +83,14 @@ export default abstract class AipBasic {
                 this.fnRunCallback(info, request.callback, resolve);
             }, request.params, options);
         })
-    }
+    };
 
     /**
      * 获取可用的 options 参数。
      * @param options {*}
      */
-    private getOptions(options) {
-        const res = { ...options };
+    private getOptions = (options) => {
+        const res = {...options};
         const token = MyStore.instance.getState().user.token;
 
         //token是否存在
@@ -99,7 +99,7 @@ export default abstract class AipBasic {
         }
 
         return res;
-    }
+    };
 
     /**
      * 向服务器发送一个请求(全局)
