@@ -3,7 +3,7 @@
   * sass
   * react
   * react-router-dom
-    * react-redux
+  * react-redux
   * redux-act
   * antd
   * moment
@@ -18,7 +18,7 @@ yarn start
 yarn build
 
 ### 目录结构
->src
->>aip (实现后端提供给前端的api)
->>>achieve (所有api的实现的位置)
->>>display (显示对2222象)
+* src
+  * aip (实现后端提供给前端的api)
+    * achieve (所有api的实现的位置)
+  * display (显示对象)
