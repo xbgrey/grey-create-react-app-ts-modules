@@ -16,3 +16,7 @@ yarn start
 
 ### 编译
 yarn build
+
+### 目录结构
+src
+  api
