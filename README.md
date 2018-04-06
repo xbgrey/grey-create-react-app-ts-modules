@@ -18,5 +18,5 @@ yarn start
 yarn build
 
 ### 目录结构
-src
-  api
+>src
+>>aip (实现后端提供给前端的api)
