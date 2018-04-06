@@ -1,7 +1,8 @@
 import { MyStore, reducers } from 'src/redux';
 import ComponentBasic from 'src/frame/component/ComponentBasic';
 
-export default class PageBasic<RootState, P, S={}> extends ComponentBasic<P, S>{
+/** 页面基础类 */
+export default abstract class PageBasic<RootState, P, S={}> extends ComponentBasic<P, S>{
     
     /**
      * 构造函数

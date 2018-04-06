@@ -4,7 +4,7 @@ import { EmptyActionCreator } from 'redux-act';
 /**
  * RootState 页面跟的的类型
  */
-export default class ActionBasic<RootState>{
+export default abstract class ActionBasic<RootState>{
 
     /**
      * 设置当前页面的状态

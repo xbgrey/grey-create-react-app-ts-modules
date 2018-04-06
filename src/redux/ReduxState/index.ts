@@ -1,5 +1,7 @@
 import reducers from '../reducers';
 import UserNode from '../reducers/user/Node';
+import EnvINode from '../reducers/env/INode';
+import ConfigINode from '../reducers/config/INode';
 
 export default class ReduxState {
 
@@ -8,22 +10,20 @@ export default class ReduxState {
      */
     public user: UserNode = reducers.user.reducer as any;
 
-    // /**
-    //  * 环境数据
-    //  * @type {*}
-    //  */
-    // env = reducers.Env.reducer;
+    /**
+     * 环境数据
+     * @type {*}
+     */
+    public env:EnvINode = reducers.env.reducer as any;
 
     /**
      * 当前的页面数据
-     * @type {*}
      */
     public currentPage: any = reducers.currentPage.reducer;
 
-    // /**
-    //  * 配置数据
-    //  * @type {*}
-    //  */
-    // config = reducers.Config.reducer;
+    /**
+     * 配置数据
+     */
+    public config: ConfigINode = reducers.config.reducer;
 }
 
