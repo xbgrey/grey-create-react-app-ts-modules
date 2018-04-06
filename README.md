@@ -20,3 +20,6 @@ yarn build
 ### 目录结构
 >src
 >>aip (实现后端提供给前端的api)
+>>>achieve (所有api的实现的位置)
+>>display (显示对象)
+>>>
