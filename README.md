@@ -3,7 +3,7 @@
   * sass
   * react
   * react-router-dom
-  * react-redux
+    * react-redux
   * redux-act
   * antd
   * moment
