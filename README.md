@@ -23,7 +23,7 @@ yarn build
     * achieve (所有api的实现的位置)
   * display (显示对象)
     * components（组件）
-    * pages (页面)
+    * modules (模块)
     * part（显示片段）
   * entry (类似条目的配置)
     * constant (全站用的常量)

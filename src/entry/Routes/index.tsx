@@ -1,10 +1,10 @@
 import * as React from 'react';
-import pages from 'src/display/pages';
+import modules from 'src/display/modules';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 const Routes = () => (
     <BrowserRouter>
-        <Route path="/" component={pages.Home} />
+        <Route path="/" component={modules.Home} />
     </BrowserRouter>
 );
 
