@@ -60,9 +60,7 @@ class State {
 interface IProps extends ReduxStatePart, IPropsBasic {
 }
 
-/**
- * 全局状态片段对象
- */
+/** 全局状态片段对象 */
 class ReduxStatePart {
 
     /** 用户的token */
