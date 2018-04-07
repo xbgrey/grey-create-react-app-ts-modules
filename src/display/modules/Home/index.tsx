@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { PageBasic, IPropsBasic } from 'src/frame/page';
 import { connect, ReduxState } from 'src/redux';
-import HomeState from './Home.State';
-import HomeAction from './Home.Action';
-import HomeConfig from './Home.Config';
+import ModulesState from './Modules.State';
+import ModulesAction from './Modules.Action';
+import ModulesConfig from './Modules.Config';
 import './index.scss';
 
 import UIComponents from './UI.Components';
@@ -23,7 +23,7 @@ const dataSource = [{
     address: '西湖区湖底公园1号'
 }];
 
-class Home extends PageBasic<HomeState, IProps> {
+class Home extends PageBasic<ModulesState, IProps> {
 
     /**
      * 组建状态
@@ -35,16 +35,16 @@ class Home extends PageBasic<HomeState, IProps> {
      */
     constructor(props: IProps) {
         super(props);
-        this.setInitRootState(new HomeState());
+        this.setInitRootState(new ModulesState());
     }
 
     render() {
         return (
             <Card title="测试" className="App" style={{width:800,margin:'20px auto'}} >
-                <Button onClick={HomeAction.fnSubmit} >{this.rootState.a}</Button>
-                <Button onClick={HomeAction.fnSubmit} >{this.props.token}</Button>
-                <Button onClick={HomeAction.fnSubmit} style={{marginBottom:20}} >{this.state.c}</Button>
-                <Table dataSource={dataSource} columns={HomeConfig.columns} />
+                <Button onClick={ModulesAction.fnSubmit} >{this.rootState.a}</Button>
+                <Button onClick={ModulesAction.fnSubmit} >{this.props.token}</Button>
+                <Button onClick={ModulesAction.fnSubmit} style={{marginBottom:20}} >{this.state.c}</Button>
+                <Table dataSource={dataSource} columns={ModulesConfig.columns} />
                 <UIComponents/>
             </Card>
         );

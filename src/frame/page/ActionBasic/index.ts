@@ -11,8 +11,8 @@ export default abstract class ActionBasic<RootState>{
      * @param {*} state 状态
      * @param {Function} callBack 设置完成后的回掉
      */
-    protected setRootState = (state: RootState) => {
-        MyStore.instance.dispatch(reducers.currentPage.ActionTypes.fnSetData, state);
+    protected setRootState = (state: RootState, callBack?:()=>{}) => {
+        MyStore.instance.dispatch(reducers.currentPage.ActionTypes.fnSetData, state, callBack);
     };
 
     /**
@@ -27,9 +27,9 @@ export default abstract class ActionBasic<RootState>{
      * @param type 动作类型
      * @returns 返回的一个代理方法
      */
-    protected getDispatchProxy(type: EmptyActionCreator): (state: RootState) => void {
-        return (state: RootState) => {
-            MyStore.instance.dispatch(type, state);
+    protected getDispatchProxy(type: EmptyActionCreator): (state: RootState, callBack:()=>{}) => void {
+        return (state: RootState, callBack:()=>{}) => {
+            MyStore.instance.dispatch(type, state, callBack);
         }
     }
 }

@@ -14,9 +14,10 @@ export default abstract class PageBasic<RootState, P, S={}> extends ComponentBas
     /**
      * 设置页面更数据
      * @param startClass 数据对象类
+     * @param callBack 设置完成后回掉
      */
-    protected setInitRootState=(rootState:RootState)=>{
-        MyStore.instance.dispatch(reducers.currentPage.ActionTypes.fnSetData, rootState);
+    protected setInitRootState=(rootState:RootState, callBack?:()=>void)=>{
+        MyStore.instance.dispatch(reducers.currentPage.ActionTypes.fnSetData, rootState, callBack);
     };
 
     /**

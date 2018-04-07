@@ -26,10 +26,19 @@ export default class MyStore {
      * 发起一个动作
      * @param type 动作类型
      * @param  value 动作数据
+     * @param callBack 动作完成后回掉
      */
-    public dispatch = (type: EmptyActionCreator, value: any) => {
+    public dispatch = (type: EmptyActionCreator, value: any, callBack?: () => void) => {
+        const unsubscribe = this._store.subscribe(() => {
+            unsubscribe();
+            callBack();
+        })
         this._store.dispatch(type.call(this, value));
     }
+
+    public f = () => {
+        this._store.subscribe
+    };
 
     /**
      * 返回应用当前的 state 树
