@@ -1,6 +1,3 @@
-/** 模块临时节点名称 */
-const TEMPORARY_NAME:string = 'sisplay/modules/Home';
-
 const columns = [{
     title: '姓名',
     dataIndex: 'name',
@@ -17,5 +14,4 @@ const columns = [{
 
 export default {
     columns,
-    TEMPORARY_NAME,
 }

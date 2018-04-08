@@ -1,6 +1,6 @@
 import Superagent from 'src/utils/ajax/Superagent';
 import { ApiRequest, ApiResponse } from 'src/frame/api';
-import { NodeEnvType } from 'src/entry/constant'
+import { NodeEnvType } from 'src/entry/constant';
 import { MyStore } from 'src/redux';
 
 /** AIP基础类 */
@@ -50,7 +50,7 @@ export default abstract class AipBasic {
      * @param request 请求消息头
      * @param message 发送的消息
      */
-    private fnShowMessage = (request: ApiRequest, message: string) => {
+    private showMessage = (request: ApiRequest, message: string) => {
         if (request.isShowModal === false) {
             return null;
         }
@@ -61,7 +61,7 @@ export default abstract class AipBasic {
      * @param request {ApiRequest} 一个请求
      * @param domain {string} 请求地址头
      */
-    private fnCall = (request: ApiRequest, domain: string): Promise<ApiResponse> => {
+    private call = (request: ApiRequest, domain: string): Promise<ApiResponse> => {
         return new Promise((resolve: (value: ApiResponse) => void) => {
             /** 消息头 */
             const options: any = this.getOptions(request.options);
@@ -70,13 +70,13 @@ export default abstract class AipBasic {
                 const info: ApiResponse = new ApiResponse();
                 if (er) {
                     info.er = er;
-                    this.fnShowMessage(request, '');
+                    this.showMessage(request, '');
                 } else {
                     if (body.ok) {
                         info.body = body.body;
                     } else {
                         info.er = body;
-                        this.fnShowMessage(request, '');
+                        this.showMessage(request, '');
                     }
                 }
                 //调用回掉
@@ -105,15 +105,15 @@ export default abstract class AipBasic {
      * 向服务器发送一个请求(全局)
      * @param request {ApiRequest} 一个请求
      */
-    protected fnCallGlobal = (request) => {
-        this.fnCall(request, this.getDomainGlobal());
+    protected callGlobal = (request:ApiRequest) => {
+        return this.call(request, this.getDomainGlobal());
     };
 
     /**
      * 向服务器发送一个请求(当前公司)
      * @param request {ApiRequest} 一个请求
      */
-    protected fnCallZone = (request) => {
-        this.fnCall(request, this.getDomainZone());
+    protected callZone = (request:ApiRequest) => {
+        return this.call(request, this.getDomainZone());
     };
 }

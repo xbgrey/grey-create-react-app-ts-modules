@@ -1,26 +1,24 @@
-import { TemporaryNode } from 'src/redux';
 import ComponentBasic from 'src/frame/component/ComponentBasic';
+import { ActionBasic } from 'src/frame/modules';
+
 /** UI基础类 */
-export default abstract class UIBasic<RootState, P={},S={}> extends ComponentBasic<P,S>{
+export default abstract class UIBasic<P , ModulesState, S={}> extends ComponentBasic<P, S>{
 
-    /** 临时节点的名称 */
-    private temporaryName:string;
+    /** 动作对象 */
+    private _action:ActionBasic<ModulesState>
 
-    /** 临时节点 */
-    private temporaryNode:TemporaryNode<RootState>;
-
-    constructor(props:P, temporaryName:string){
+    constructor(props: P, action:ActionBasic<ModulesState>) {
         super(props);
-        this.temporaryName = temporaryName;
+        this._action = action;
     }
 
-    /** 生命周期（在渲染前调用） */
-    componentWillMount(){
-        this.temporaryNode = new TemporaryNode(this.temporaryName);
+    /** 动作对象 */
+    protected get action():ActionBasic<ModulesState>{
+        return this._action;
     }
 
     /** 当前页面的状态 */
-    protected rootState(): RootState {
-        return this.temporaryNode.getState();
+    protected rootState(): ModulesState {
+        return null;
     }
 }

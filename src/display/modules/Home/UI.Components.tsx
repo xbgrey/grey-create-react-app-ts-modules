@@ -6,15 +6,14 @@ import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 import Button from 'antd/lib/button';
 import UserNode from 'src/redux/reducers/user/Node';
-import ModulesConfig from './Modules.Config';
 
-class UIDemo extends UIBasic<ModulesState, IProps> {
+class UIDemo extends UIBasic<IProps, ModulesState> {
 
     /**
      * 构造函数
      */
     constructor(props: IProps) {
-        super(props, ModulesConfig.TEMPORARY_NAME);
+        super(props, ModulesAction);
     }
 
     render() {
@@ -35,13 +34,12 @@ interface IProps extends ReduxStatePart, IPropsBasic {
 /** 全局状态片段对象 */
 class ReduxStatePart {
 
-    /** 用户的 */
-    public user?:UserNode;
+    /** 用户的token */
+    public user ?: UserNode;
 
     constructor(state: ReduxState) {
+        this.user = state.user;
     }
 }
 
-export default connect(state=>({
-    token:state.user.token,
-}))(UIDemo)
+export default connect(ReduxStatePart)(UIDemo)
