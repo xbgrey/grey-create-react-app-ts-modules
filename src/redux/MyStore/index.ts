@@ -4,20 +4,20 @@ import ReduxState from '../ReduxState';
 
 export default class MyStore {
 
+    /** redux的跟 */
     private _store: Store<ReduxState>;
 
+    /** 构造函数 */
     constructor() {
         if (MyStore._instance) {
             throw ('[redux.Store]对象为单利');
         } else {
             MyStore._instance = this;
-            this.fnInitialization();
+            this.initialization();
         }
     }
 
-    /**
-     * 结构根部
-     */
+    /** 结构根部 */
     public get store(): Store<ReduxState> {
         return this._store;
     }
@@ -31,35 +31,34 @@ export default class MyStore {
     public dispatch = (type: EmptyActionCreator, value: any, callBack?: () => void) => {
         const unsubscribe = this._store.subscribe(() => {
             unsubscribe();
-            callBack();
+            if(typeof callBack === 'function')
+                callBack();
         })
         this._store.dispatch(type.call(this, value));
     }
 
-    public f = () => {
-        this._store.subscribe
-    };
-
     /**
      * 返回应用当前的 state 树
      */
-    public getState = (): ReduxState => {
+    public getState(): ReduxState{
         return this._store.getState();
     }
 
     /**
      * 初始化对象
      */
-    private fnInitialization = (): void => {
+    private initialization = (): void => {
         this._store = createStore(
             combineReducers<ReduxState>(new ReduxState() as any),
             window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__']()
+            // window['$$_kxl_env'].NODE_ENV!=='production' && 
         );
     }
 
-    // window['$$_kxl_env'].NODE_ENV!=='production' && 
+    /** 当前实例 */
     private static _instance: MyStore;
 
+    /** 获取当前实例 */
     public static get instance(): MyStore {
         if (!MyStore._instance) {
             new MyStore();

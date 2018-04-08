@@ -1,13 +1,12 @@
 import * as React from 'react';
 import Card from 'antd/lib/card';
-import UIBasic from 'src/frame/page/UIBasic';
-import IPropsBasic from 'src/frame/page/IPropsBasic'
-import ReduxState from 'src/redux/ReduxState';
-import { connect } from 'src/redux';
+import { UIBasic, IPropsBasic } from 'src/frame/modules';
+import { connect, ReduxState } from 'src/redux';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 import Button from 'antd/lib/button';
 import UserNode from 'src/redux/reducers/user/Node';
+import ModulesConfig from './Modules.Config';
 
 class UIDemo extends UIBasic<ModulesState, IProps> {
 
@@ -15,7 +14,7 @@ class UIDemo extends UIBasic<ModulesState, IProps> {
      * 构造函数
      */
     constructor(props: IProps) {
-        super(props);
+        super(props, ModulesConfig.TEMPORARY_NAME);
     }
 
     render() {
@@ -40,8 +39,9 @@ class ReduxStatePart {
     public user?:UserNode;
 
     constructor(state: ReduxState) {
-        this.user = state.user;
     }
 }
 
-export default connect(ReduxStatePart)(UIDemo)
+export default connect(state=>({
+    token:state.user.token,
+}))(UIDemo)

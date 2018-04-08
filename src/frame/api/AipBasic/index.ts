@@ -23,16 +23,16 @@ export default abstract class AipBasic {
      * @returns {string}
      */
     private getDomainGlobal = (): string => {
-        const rootConfig = MyStore.instance.getState().config.rootConfig;
-        switch (MyStore.instance.getState().env.NODE_ENV) {
+        const {config, env} = MyStore.instance.getState();
+        switch (env.NODE_ENV) {
             case NodeEnvType.开发环境:
-                return rootConfig.DEV_URI;
+                return config.rootConfig.DEV_URI;
             case NodeEnvType.生产环境:
-                return rootConfig.API_URI;
+                return config.rootConfig.API_URI;
             case NodeEnvType.测试环境:
-                return rootConfig.TEST_URI;
+                return config.rootConfig.TEST_URI;
             default:
-                console.error('[api]环境变量异常', MyStore.instance.getState().env);
+                console.error('[api]环境变量异常', env);
                 return '';
         }
     };

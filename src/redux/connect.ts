@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 
 function connectIndex(ReduxStatePart:any){
     const s2p = (state: any) => {
-        let ret: any = new ReduxStatePart(state);
-        ret.currentPage = state.currentPage;
-        return ret;
+        return {
+            ...
+            new ReduxStatePart(state)
+        };
     }
     return connect(s2p);
 }

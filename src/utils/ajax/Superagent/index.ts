@@ -1,6 +1,6 @@
 import * as request from 'superagent';
-import CallType from '../CallType';
-import JSObject from '../kit/JSObject';
+import { CallType } from 'src/utils/ajax';
+import { JSObject } from 'src/utils/kit';
 
 /**
  * 请求服务器
