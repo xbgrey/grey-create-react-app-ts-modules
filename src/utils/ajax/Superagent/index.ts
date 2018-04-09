@@ -22,7 +22,6 @@ function call(type:CallType, uri:string, fnCallback:(er:any, body:any)=>void, pa
         .set(options)[type === 'get' ? 'query' : 'send'](params)
         .end((err, res) => {
             if (err) {
-                console.error('[ajax.Superagent]',err);
                 fnCallback(err, null);
             } else {
                 fnCallback(null, res.body);}

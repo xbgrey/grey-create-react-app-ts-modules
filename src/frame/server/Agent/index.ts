@@ -2,27 +2,28 @@ import Superagent from 'src/utils/ajax/Superagent';
 import { Request, Response } from '../';
 import { NodeEnvType } from 'src/entry/constant';
 import { MyStore } from 'src/redux';
+import Message from 'antd/lib/message';
 
 /** AIP基础类 */
-export default class AipBasic {
+export default class Agent {
 
     /** 当前实例 */
-    private static _instance: AipBasic;
+    private static _instance: Agent;
 
     /** 获取当前实例 */
-    public static get instance(): AipBasic {
-        if (!AipBasic._instance) {
-            new MyStore();
+    public static get instance(): Agent {
+        if (!Agent._instance) {
+            new Agent();
         }
-        return AipBasic._instance;
+        return Agent._instance;
     }
 
     /** 构造函数 */
     constructor() {
-        if (AipBasic._instance) {
-            throw ('[redux.Store]对象为单利');
+        if (Agent._instance) {
+            throw ('[api.Agent]对象为单利');
         } else {
-            AipBasic._instance = this;
+            Agent._instance = this;
         }
     }
 
@@ -72,6 +73,7 @@ export default class AipBasic {
         if (request.isShowModal === false) {
             return null;
         }
+        Message.error(message);
     };
 
     /**
@@ -85,19 +87,19 @@ export default class AipBasic {
             const options: any = this.getOptions(request.options);//消息头
 
             return Superagent.call(request.type, domain + request.uri, (er, body) => {
-
+                
                 const info: Response = new Response();//返回数据
 
                 //是否失败
                 if (er) {
                     info.er = er;
-                    this.showMessage(request, '失败');
+                    this.showMessage(request, '服务器异常');
                 } else {
                     if (body.ok) {
                         info.body = body.body;
                     } else {
                         info.er = body;
-                        this.showMessage(request, '失败');
+                        this.showMessage(request, body.status.description || '系统错误');
                     }
                 }
 

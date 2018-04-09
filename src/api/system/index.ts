@@ -1,7 +1,7 @@
-import demo from './demo';
+import webTokenLogin from './webTokenLogin';
 
 export default {
 
-    /** 例子 */
-    demo,
+    /** 用户登录 */
+    webTokenLogin,
 }

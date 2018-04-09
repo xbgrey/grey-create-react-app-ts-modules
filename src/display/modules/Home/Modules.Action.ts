@@ -1,11 +1,12 @@
 import { ActionBasic } from 'src/frame/modules';
 import { reducers, MyStore } from 'src/redux';
 import ModulesState from './Modules.State';
+import { system } from 'src/api'
 
 class ModulesAction extends ActionBasic<ModulesState>{
 
     /** 发送消息 */
-    public fnSubmit = ():void=>{
+    public fnSubmit = async ()=>{
         
         this.modulesState.a++;
         this.setModulesState(this.modulesState);
@@ -13,6 +14,13 @@ class ModulesAction extends ActionBasic<ModulesState>{
         const user = MyStore.instance.getState().user;
         user.token = Math.random().toString();
         this.getDispatchProxy(reducers.user.ActionTypes.fnSetUserInfo)(user);
+
+        const res = await system.webTokenLogin(this, {
+            credential:'xx',
+            identifier:'xxx'
+        });
+
+        console.log(res);
     }
 }
 
