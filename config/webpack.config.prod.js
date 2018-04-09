@@ -264,6 +264,7 @@ module.exports = {
       template: paths.appHtml,
       config: configUrl,
       env: webEnv,
+      mock: 'undefined',
       version: new Date().getTime(),
       minify: {
         removeComments: true,

@@ -46,7 +46,7 @@ export default class Agent {
         const { config, env } = MyStore.instance.getState();
         switch (env.NODE_ENV) {
             case NodeEnvType.开发环境:
-                return 'http://dev.api.xltec.cc'//config.rootConfig.DEV_URI;
+                return config.rootConfig.DEV_URI;
             case NodeEnvType.生产环境:
                 return config.rootConfig.API_URI;
             case NodeEnvType.测试环境:
@@ -80,15 +80,16 @@ export default class Agent {
      * 向服务器发送一个请求
      * @param request 一个请求
      * @param domain 请求地址头
+     * @param mock 是否用mock数据
      */
-    private call = (request: Request, domain: string): Promise<Response> => {
+    private call = (request: Request, domain: string, mock:boolean): Promise<Response> => {
         return new Promise((resolve: (value: Response) => void) => {
 
             MyStore.instance.dispatch(reducers.system.ActionTypes.addLoading, request.uri);//添加loading
 
             const options: any = this.getOptions(request.options);//消息头
-
-            return Superagent.call(request.type, domain + request.uri, (er, body) => {
+            const { env } = MyStore.instance.getState();
+            const superagentCallback = (er, body) => {
                 
                 MyStore.instance.dispatch(reducers.system.ActionTypes.removeLoading, request.uri);//删除loading
 
@@ -108,7 +109,16 @@ export default class Agent {
                 }
 
                 this.runCallback(info, request.callback, resolve);//调用回掉
-            }, request.params, options);
+            }
+
+            if(mock && env.IS_MOCK && window['$$_kxl_mock'] && window['$$_kxl_mock'][request.uri]){
+                setTimeout(()=>{
+                    console.info('[mock]['+request.uri+']',window['$$_kxl_mock'][request.uri]);
+                    superagentCallback(null, window['$$_kxl_mock'][request.uri]);
+                }, 100);
+            }else{
+                Superagent.call(request.type, domain + request.uri, superagentCallback, request.params, options);
+            }
         })
     };
 
@@ -132,15 +142,15 @@ export default class Agent {
      * 向服务器发送一个请求(全局)
      * @param request 一个请求
      */
-    public callGlobal = (request: Request): Promise<Response> => {
-        return this.call(request, this.getDomainGlobal());
+    public callGlobal = (request: Request, mock:boolean=false): Promise<Response> => {
+        return this.call(request, this.getDomainGlobal(), mock);
     };
 
     /**
      * 向服务器发送一个请求(当前公司)
      * @param request 一个请求
      */
-    public callZone = (request: Request): Promise<Response> => {
-        return this.call(request, this.getDomainZone());
+    public callZone = (request: Request,  mock:boolean=false): Promise<Response> => {
+        return this.call(request, this.getDomainZone(), mock);
     };
 }

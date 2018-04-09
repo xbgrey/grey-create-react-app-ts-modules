@@ -27,6 +27,8 @@ const env = getClientEnvironment(publicUrl);
 const configUrl = require("./create_config");
 // 站点环境变量
 const webEnv = require('./env_config');
+// mock 数据
+const mockData = require('./mock');
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -238,6 +240,7 @@ module.exports = {
       template: paths.appHtml,
       config: configUrl,
       env: webEnv,
+      mock: mockData,
       version: new Date().getTime(),
     }),
     // Add module names to factory functions so they appear in browser profiler.
