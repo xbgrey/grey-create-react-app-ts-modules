@@ -1,6 +1,6 @@
 enum Urls{
     /** 用户登录 */
-    webTokenLogin = '/global/auth/web-token/login',
+    webTokenLogin = '/auth/login',
 }
 
 export default Urls

@@ -15,12 +15,14 @@ class ModulesAction extends ActionBasic<ModulesState>{
         user.token = Math.random().toString();
         this.getDispatchProxy(reducers.user.ActionTypes.fnSetUserInfo)(user);
 
-        const res = await system.webTokenLogin(this, {
-            credential:'xx',
-            identifier:'xxx'
-        });
+        const res = await system.webTokenLogin({"loginName":"yiliang","password":"123456"});
 
-        console.log(res);
+        if(res.er){
+            console.log(res.er);
+        }else{
+            console.log(res.body);
+        }
+        
     }
 }
 

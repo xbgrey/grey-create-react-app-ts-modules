@@ -46,7 +46,7 @@ export default class Agent {
         const { config, env } = MyStore.instance.getState();
         switch (env.NODE_ENV) {
             case NodeEnvType.开发环境:
-                return config.rootConfig.DEV_URI;
+                return 'http://dev.api.xltec.cc'//config.rootConfig.DEV_URI;
             case NodeEnvType.生产环境:
                 return config.rootConfig.API_URI;
             case NodeEnvType.测试环境:

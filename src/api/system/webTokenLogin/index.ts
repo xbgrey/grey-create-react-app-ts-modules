@@ -9,8 +9,8 @@ import IOptions from './IOptions';
  * @param target 请求发起对象 
  * @param option 参数
  */
-export default async function webTokenLogin(target:any, option: IOptions): Promise<Response<IData>> {
-    const req: Request = new Request(target, CallType.POST, Urls.webTokenLogin, option);
+export default async function webTokenLogin(option: IOptions): Promise<Response<IData>> {
+    const req: Request = new Request(CallType.POST, Urls.webTokenLogin, option);
     const res: Response<IData> = await Agent.instance.callGlobal(req);
     return res;
 }
