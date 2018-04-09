@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ModulesBasic , IPropsBasic } from 'src/frame/modules';
-import { connect, ReduxState } from 'src/redux';
+import { connect, ReduxState, MyStore } from 'src/redux';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 import ModulesConfig from './Modules.Config';
@@ -36,31 +36,31 @@ class Home extends ModulesBasic<IProps, ModulesState> {
     }
  
     render() {
+        const user =  MyStore.instance.getState().user
         return (
             <Card title="测试" className="App" style={{ width: 800, margin: '20px auto' }} >
                 <Button onClick={ModulesAction.fnSubmit} >{this.state.a}</Button>
-                <Button onClick={ModulesAction.fnSubmit} >{this.props.token}</Button>
+                <Button onClick={ModulesAction.fnSubmit} >{user.token}</Button>
                 <Button onClick={ModulesAction.fnSubmit} style={{ marginBottom: 20 }} >{this.state.b}</Button>
                 <Table dataSource={dataSource} columns={ModulesConfig.columns} />
-                <UIComponents />
+                <UIComponents/>
             </Card>
         );
     }
 }
 
 /** 组建的props接口 */
-interface IProps extends ReduxStatePart, IPropsBasic {
+interface IProps extends IReduxStatePart, IPropsBasic {
 }
 
-/** 全局状态片段对象 */
-class ReduxStatePart {
-
+/** 全局数据片段 */
+interface IReduxStatePart {    
     /** 用户的token */
-    public token: string;
-
-    constructor(state: ReduxState) {
-        this.token = state.user.token;
-    }
+    token ?: string;
 }
 
-export default connect(ReduxStatePart)(Home)
+export default connect((state:ReduxState):IReduxStatePart=>{
+    return {
+        token: state.user.token,
+    }
+})(Home)

@@ -18,6 +18,7 @@ class UIDemo extends UIBasic<IProps, ModulesState> {
 
     render() {
         const user:UserNode = this.props.user;
+        this
         return (
             <Card title="UI测试" className="App" style={{width:600,margin:'20px auto'}} >
                 <Button onClick={ModulesAction.fnSubmit}>试试看</Button>
@@ -28,18 +29,17 @@ class UIDemo extends UIBasic<IProps, ModulesState> {
 }
 
 /** 组建的props接口 */
-interface IProps extends ReduxStatePart, IPropsBasic {
+interface IProps extends IReduxStatePart, IPropsBasic {
 }
 
-/** 全局状态片段对象 */
-class ReduxStatePart {
-
+/** 全局数据片段 */
+interface IReduxStatePart {    
     /** 用户的token */
-    public user ?: UserNode;
-
-    constructor(state: ReduxState) {
-        this.user = state.user;
-    }
+    user ?: UserNode;
 }
 
-export default connect(ReduxStatePart)(UIDemo)
+export default connect((state:ReduxState):IReduxStatePart=>{
+    return {
+        user: state.user,
+    }
+})(UIDemo);

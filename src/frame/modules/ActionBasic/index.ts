@@ -47,8 +47,8 @@ export default abstract class ActionBasic<ModulesState>{
      * @param type 动作类型
      * @returns 返回的一个代理方法
      */
-    protected getDispatchProxy(type: EmptyActionCreator): (state: ModulesState, callBack:()=>{}) => void {
-        return (state: ModulesState, callBack:()=>{}) => {
+    protected getDispatchProxy(type: EmptyActionCreator): (state: any, callBack?:()=>{}) => void {
+        return (state: any, callBack:()=>{}) => {
             MyStore.instance.dispatch(type, state, callBack);
         }
     }
