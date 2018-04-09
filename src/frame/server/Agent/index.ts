@@ -1,7 +1,7 @@
 import Superagent from 'src/utils/ajax/Superagent';
 import { Request, Response } from '../';
 import { NodeEnvType } from 'src/entry/constant';
-import { MyStore } from 'src/redux';
+import { MyStore, reducers } from 'src/redux';
 import Message from 'antd/lib/message';
 
 /** AIP基础类 */
@@ -84,10 +84,14 @@ export default class Agent {
     private call = (request: Request, domain: string): Promise<Response> => {
         return new Promise((resolve: (value: Response) => void) => {
 
+            MyStore.instance.dispatch(reducers.system.ActionTypes.addLoading, request.uri);//添加loading
+
             const options: any = this.getOptions(request.options);//消息头
 
             return Superagent.call(request.type, domain + request.uri, (er, body) => {
                 
+                MyStore.instance.dispatch(reducers.system.ActionTypes.removeLoading, request.uri);//删除loading
+
                 const info: Response = new Response();//返回数据
 
                 //是否失败

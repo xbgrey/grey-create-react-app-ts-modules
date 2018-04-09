@@ -2,6 +2,7 @@ import reducers from '../reducers';
 import UserNode from '../reducers/user/Node';
 import EnvINode from '../reducers/env/INode';
 import ConfigINode from '../reducers/config/INode';
+import SystemNode from '../reducers/system/Node';
 
 /** 全局状态的跟节点 */
 export default class ReduxState {
@@ -14,5 +15,8 @@ export default class ReduxState {
 
     /** 配置数据 */
     public config: ConfigINode = reducers.config.reducer as any;
+
+    /** 系统数据 */
+    public system : SystemNode = reducers.system.reducer as any;
 }
 

@@ -1,6 +1,7 @@
 import user from './user';
 import config from './config';
 import env from './env';
+import system from './system';
 
 export default {
     /** 用户数据 */
@@ -11,4 +12,7 @@ export default {
 
     /** 环境变量 */
     env,
+
+    /** 系统数据 */
+    system,
 }
