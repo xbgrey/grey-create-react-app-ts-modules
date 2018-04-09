@@ -30,6 +30,10 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
+// 配置地址
+const configUrl = require("./create_config");
+// 站点环境变量
+const webEnv = require('./env_config');
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -258,6 +262,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
+      config: configUrl,
+      env: webEnv,
+      version: new Date().getTime(),
       minify: {
         removeComments: true,
         collapseWhitespace: true,

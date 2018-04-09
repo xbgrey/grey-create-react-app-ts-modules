@@ -5,5 +5,9 @@ import { NodeEnvType } from 'src/entry/constant';
  */
 export default interface INode{
 
+    /** 当前环境类型 */
     NODE_ENV:NodeEnvType;
+    
+    /** 是否开启mock数据 */
+    IS_MOCK:boolean;
 }

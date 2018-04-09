@@ -50,8 +50,7 @@ export default class MyStore {
     private initialization = (): void => {
         this._store = createStore(
             combineReducers<ReduxState>(new ReduxState() as any),
-            window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__']()
-            // window['$$_kxl_env'].NODE_ENV!=='production' && 
+            window['$$_kxl_env'].NODE_ENV!=='production' && window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__']()
         );
     }
 
