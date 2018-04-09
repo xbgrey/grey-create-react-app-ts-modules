@@ -19,19 +19,19 @@ yarn build
 
 ### 目录结构
 * src
-  * aip (所有和全局数据以及后端交互但是不和显示层相关的逻辑)
-    * system (系统通用api)
-    * user (用户相关api)
-  * display (显示对象)
+  * aip （所有和全局数据以及后端交互但是不和显示层相关的逻辑）
+    * system（系统通用api）
+    * user（用户相关api）
+  * display（显示对象）
     * components（组件）
-    * modules (模块)
+    * modules（模块）
     * part（显示片段）
-  * entry (类似条目的配置)
-    * constant (全站用的常量)
-    * Routes (路由的跟配置)
-  * frame (全站底层类)
-  * redux (全局状态管理的扩展)
-  * utils (全站和业务无关的工具类)
+  * entry（类似条目的配置）
+    * constant（全站用的常量）
+    * Routes（路由的跟配置）
+  * frame （全站底层类）
+  * redux （全局状态管理的扩展）
+  * utils （全站和业务无关的工具类）
 
 <br/><br/>
 
