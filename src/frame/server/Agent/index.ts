@@ -141,6 +141,7 @@ export default class Agent {
     /**
      * 向服务器发送一个请求(全局)
      * @param request 一个请求
+     * @param mock 是否用mock数据
      */
     public callGlobal = (request: Request, mock:boolean=false): Promise<Response> => {
         return this.call(request, this.getDomainGlobal(), mock);
@@ -149,6 +150,7 @@ export default class Agent {
     /**
      * 向服务器发送一个请求(当前公司)
      * @param request 一个请求
+     * @param mock 是否用mock数据
      */
     public callZone = (request: Request,  mock:boolean=false): Promise<Response> => {
         return this.call(request, this.getDomainZone(), mock);

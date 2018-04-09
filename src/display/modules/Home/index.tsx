@@ -4,12 +4,13 @@ import { connect, ReduxState, MyStore } from 'src/redux';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 import ModulesConfig from './Modules.Config';
-import './index.scss';
 
 import UIComponents from './UI.Components';
 import Button from 'antd/lib/button';
 import Table from 'antd/lib/table';
 import Card from 'antd/lib/card';
+
+import './index.scss';
 
 const dataSource = [{
     key: '1',
@@ -38,7 +39,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
     render() {
         const user =  MyStore.instance.getState().user
         return (
-            <Card title="测试" className="App" style={{ width: 800, margin: '20px auto' }} >
+            <Card title="测试" className='App' style={{ width: 800, margin: '20px auto' }} >
                 <Button onClick={ModulesAction.fnSubmit} >{this.state.a}</Button>
                 <Button onClick={ModulesAction.fnSubmit} >{user.token}</Button>
                 <Button onClick={ModulesAction.fnSubmit} style={{ marginBottom: 20 }} >{this.state.b}</Button>

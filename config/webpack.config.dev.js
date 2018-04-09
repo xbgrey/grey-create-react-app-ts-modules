@@ -147,7 +147,6 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
               compact: true,
             },
           },
@@ -178,6 +177,7 @@ module.exports = {
               {
                 loader: require.resolve('css-loader'),
                 options: {
+                  sourceMap:true,
                   importLoaders: 1,
                 },
               },
@@ -202,7 +202,7 @@ module.exports = {
                 },
               },
               {
-                loader: "sass-loader"
+                loader: "sass-loader",
               },
             ],
           },
