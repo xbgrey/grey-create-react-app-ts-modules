@@ -20,7 +20,8 @@ yarn build
 ### 目录结构
 * src
   * aip (所有和全局数据以及后端交互但是不和显示层相关的逻辑)
-    * achieve (所有api的实现的位置)
+    * system (系统通用api)
+    * user (用户相关api)
   * display (显示对象)
     * components（组件）
     * modules (模块)
