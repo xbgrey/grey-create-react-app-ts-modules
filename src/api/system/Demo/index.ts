@@ -5,7 +5,8 @@ import IOptions from './IOptions';
 
 export default async function demo(target:any, option: IOptions): Promise<IData> {
 
-    const res: Response = await Agent.instance.callZone(new Request(target, CallType.GET, 'xxxx', option));
+    const req: Request = new Request(target, CallType.GET, 'xxxx', option);
+    const res: Response = await Agent.instance.callZone(req);
     if (res.er) {
         return null;
     } else {

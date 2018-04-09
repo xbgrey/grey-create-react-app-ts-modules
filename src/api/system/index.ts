@@ -1,5 +1,7 @@
-import Demo from './Demo';
+import demo from './demo';
 
 export default {
-    demo:new Demo().run
+
+    /** 例子 */
+    demo,
 }
