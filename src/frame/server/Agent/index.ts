@@ -6,16 +6,16 @@ import { MyStore } from 'src/redux';
 /** AIP基础类 */
 export default class AipBasic {
 
-     /** 当前实例 */
-     private static _instance: AipBasic;
+    /** 当前实例 */
+    private static _instance: AipBasic;
 
-     /** 获取当前实例 */
-     public static get instance(): AipBasic {
-         if (!AipBasic._instance) {
-             new MyStore();
-         }
-         return AipBasic._instance;
-     }
+    /** 获取当前实例 */
+    public static get instance(): AipBasic {
+        if (!AipBasic._instance) {
+            new MyStore();
+        }
+        return AipBasic._instance;
+    }
 
     /** 构造函数 */
     constructor() {

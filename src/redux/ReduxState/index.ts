@@ -12,13 +12,7 @@ export default class ReduxState {
     /** 环境数据 */
     public env:EnvINode = reducers.env.reducer as any;
 
-    /** 当前的页面数据 */
-    // public currentPage: any = reducers.currentPage.reducer;
-
     /** 配置数据 */
     public config: ConfigINode = reducers.config.reducer as any;
-
-    /** 临时节点 */
-    public temporary: any = reducers.temporary.reducer as any;
 }
 

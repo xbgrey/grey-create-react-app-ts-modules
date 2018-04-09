@@ -23,6 +23,10 @@ const publicPath = '/';
 const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
+// 配置地址
+const configUrl = require("./create_config");
+// 站点环境变量
+const webEnv = require('./env_config');
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -232,6 +236,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
+      config: configUrl,
+      env: webEnv,
+      version: new Date().getTime(),
     }),
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),

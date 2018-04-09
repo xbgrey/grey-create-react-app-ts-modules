@@ -4,7 +4,6 @@ import IData from './IData';
 import IOptions from './IOptions';
 
 export default async function demo(target:any, option: IOptions): Promise<IData> {
-
     const req: Request = new Request(target, CallType.GET, 'xxxx', option);
     const res: Response = await Agent.instance.callZone(req);
     if (res.er) {
@@ -17,10 +16,7 @@ export default async function demo(target:any, option: IOptions): Promise<IData>
 class Data implements IData {
 
     public value1: number;
-
     public value2: number;
-
     constructor(body: any) {
-
     }
 }
