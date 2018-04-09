@@ -1,4 +1,4 @@
 export default interface IDemoOptions{
-    parameter1:number;
+    parameter1:any;
     parameter2:string;
 }

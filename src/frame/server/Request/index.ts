@@ -1,6 +1,5 @@
 import { CallType } from 'src/utils/ajax';
-import { ApiResponse } from '../../api';
-import { Urls } from 'src/entry/constant';
+import { Response } from '../';
 
 /** Api请求数据 */
 export default class ApiRequest {
@@ -12,10 +11,10 @@ export default class ApiRequest {
     public type:CallType = CallType.GET;
 
     /** api地址 */
-    public uri:Urls;
+    public uri:string;
 
     /** 回掉函数 */
-    public callback:(value:ApiResponse)=>void = null;
+    public callback:(value:Response)=>void = null;
 
     /** 请求参数 */
     public params:any = {};
@@ -29,11 +28,11 @@ export default class ApiRequest {
     /**
      * 构造函数
      * @param target  发送请求的发起对象 (传null表示可以不限制请求)
+     * @param type  请求类型
      * @param uri api地址
      * @param params  请求参数
-     * @param type  请求类型
      */
-    constructor(target:any, type:CallType, uri:Urls, params:any) {
+    constructor(target:any, type:CallType, uri:string, params:any) {
         this.target = target;
         this.uri = uri;
         this.params = params;

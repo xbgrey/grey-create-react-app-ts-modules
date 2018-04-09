@@ -10,7 +10,7 @@ import { JSObject } from 'src/utils/kit';
  * @param params 参数
  * @param options 请求头
  */
-function fnCall(type:CallType, uri:string, fnCallback:(er:any, body:any)=>void, params:any, options:any = {}) {
+function call(type:CallType, uri:string, fnCallback:(er:any, body:any)=>void, params:any, options:any = {}) {
     options = {
         'Content-Type': 'application/json',
         ...options,
@@ -31,5 +31,5 @@ function fnCall(type:CallType, uri:string, fnCallback:(er:any, body:any)=>void, 
 }
 
 export default {
-    fnCall
+    call
 }

@@ -1,0 +1,1 @@
+export { default as system } from './system'; //系统aip
