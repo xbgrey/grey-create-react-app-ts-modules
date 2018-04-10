@@ -10,7 +10,9 @@ import Button from 'antd/lib/button';
 import Table from 'antd/lib/table';
 import Card from 'antd/lib/card';
 
-import './index.scss';
+const css = require('./index.scss');
+
+console.log(css);
 
 const dataSource = [{
     key: '1',
@@ -29,9 +31,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
     /** 组建状态 */
     public state: ModulesState = new ModulesState();
 
-    /**
-     * 构造函数
-     */
+    /** 构造函数 */
     constructor(props: IProps) {
         super(props, ModulesAction);
     }
@@ -39,7 +39,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
     render() {
         const user =  MyStore.instance.getState().user
         return (
-            <Card title="测试" className='App' style={{ width: 800, margin: '20px auto' }} >
+            <Card title="测试" className={css.App} style={{ width: 800, margin: '20px auto' }} >
                 <Button onClick={ModulesAction.fnSubmit} >{this.state.a}</Button>
                 <Button onClick={ModulesAction.fnSubmit} >{user.token}</Button>
                 <Button onClick={ModulesAction.fnSubmit} style={{ marginBottom: 20 }} >{this.state.b}</Button>

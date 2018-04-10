@@ -101,6 +101,7 @@ module.exports = {
       '.json',
       '.web.jsx',
       '.jsx',
+      '.scss',
     ],
     alias: modules,
     plugins: [
@@ -178,6 +179,8 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   sourceMap:true,
+                  modules: true,
+                  localIdentName: '[path][name]__[local]--[hash:base64:5]',
                   importLoaders: 1,
                 },
               },
