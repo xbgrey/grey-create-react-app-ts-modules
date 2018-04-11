@@ -1,7 +1,7 @@
 const localhost = 'http://localhost:8888/';
 const head = 'https://config.kingxunlian.com/';
 
-configName = process.argv[2] || 'demo';
+configName = 'demo'//process.argv[2] || 'demo';
 
 /**获取配置文件地址*/
 function getConfigUrl(){

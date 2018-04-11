@@ -1,7 +1,7 @@
-export default interface IDemoOptions{
+export default interface IDemoOptions {
     /** 密码 */
-    password:string;
+    password: string;
 
     /** 用户名 */
-    loginName:string;
+    loginName: string;
 }

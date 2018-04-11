@@ -1,2 +1,2 @@
-export default interface IData{
+export default interface IData {
 }
