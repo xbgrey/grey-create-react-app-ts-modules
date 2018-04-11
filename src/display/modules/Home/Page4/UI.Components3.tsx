@@ -17,7 +17,7 @@ class UIDemo extends UIBasic<IProps, ModulesState> {
 
     render() {
         return (
-            <Card title="UI4" style={{ width: 600, margin: '20px auto' }} >
+            <Card title="UI3" style={{ width: 600, margin: '20px auto' }} >
             </Card>
         );
     }

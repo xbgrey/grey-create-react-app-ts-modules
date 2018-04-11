@@ -16,6 +16,17 @@ import ModulesAction from './Modules.Action';
 
 const css = require('./index.scss');
 
+const red = [
+    <Route key={1} path="*page1" component={Page1} />,
+    <Route key={2} path="*page2" component={Page2} />,
+    <Route key={3} path="*page3" component={Page3} />,
+    <Route key={4} path="*page4" component={Page4} />,
+    <Route key={5} path="*page5" component={Page5} />,
+    <Route key={6} path="*page6" component={Page6} />,
+    <Route key={7} path="*page7" component={Page7} />,
+    <Route key={8} path="*page8" component={Page8} />
+];
+
 class Home extends ModulesBasic<IProps, ModulesState> {
 
     /** 组建状态 */
@@ -28,7 +39,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
 
     render() {
         return (
-            <Card title="测试" className={css.App} style={{ width: 800, margin: '20px auto' }} >
+            <Card title="测试" className={css.App} style={{ width: 800, margin: '20px auto' }} >   
                 <Menu mode="horizontal">
                     <Menu.Item key='Pag1'><Link to='/page1'>Pag1</Link></Menu.Item>
                     <Menu.Item key='Pag2'><Link to='/page2'>Pag2</Link></Menu.Item>
@@ -40,14 +51,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
                     <Menu.Item key='Pag8'><Link to='/page8'>Pag8</Link></Menu.Item>
                 </Menu>
                 <div>
-                    <Route path="*page1" component={Page1} />
-                    <Route path="*page2" component={Page2} />
-                    <Route path="*page3" component={Page3} />
-                    <Route path="*page4" component={Page4} />
-                    <Route path="*page5" component={Page5} />
-                    <Route path="*page6" component={Page6} />
-                    <Route path="*page7" component={Page7} />
-                    <Route path="*page8" component={Page8} />
+                    {red.map(value=>(value))}
                 </div>
             </Card>
         );

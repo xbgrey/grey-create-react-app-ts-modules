@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card, Menu } from 'antd';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
 import { connect, ReduxState } from 'src/redux';
 import ModulesState from './Modules.State';
@@ -27,17 +27,21 @@ class Page4 extends ModulesBasic<IProps, ModulesState> {
     }
 
     render() {
+        if(this.props.location.pathname === this.props.match.url){
+            return <Redirect to={`${this.props.match.url}/ui1`}/>
+        }
+
         return (
             <Card title="Page4" className={css.App} style={{ width: 800, margin: '20px auto' }} >
                 <Menu mode="horizontal">
-                    <Menu.Item key='Pag1'><Link to='/page4/ui1'>ui1</Link></Menu.Item>
-                    <Menu.Item key='Pag2'><Link to='/page4/ui2'>ui2</Link></Menu.Item>
-                    <Menu.Item key='Pag3'><Link to='/page4/ui3'>ui3</Link></Menu.Item>
-                    <Menu.Item key='Pag4'><Link to='/page4/ui4'>ui4</Link></Menu.Item>
-                    <Menu.Item key='Pag5'><Link to='/page4/ui5'>ui5</Link></Menu.Item>
-                    <Menu.Item key='Pag6'><Link to='/page4/ui6'>ui6</Link></Menu.Item>
-                    <Menu.Item key='Pag7'><Link to='/page4/ui7'>ui7</Link></Menu.Item>
-                    <Menu.Item key='Pag8'><Link to='/page4/ui8'>ui8</Link></Menu.Item>
+                    <Menu.Item key='Pag1'><Link to={`${this.props.match.url}/ui1`}>ui1</Link></Menu.Item>
+                    <Menu.Item key='Pag2'><Link to={`${this.props.match.url}/ui2`}>ui2</Link></Menu.Item>
+                    <Menu.Item key='Pag3'><Link to={`${this.props.match.url}/ui3`}>ui3</Link></Menu.Item>
+                    <Menu.Item key='Pag4'><Link to={`${this.props.match.url}/ui4`}>ui4</Link></Menu.Item>
+                    <Menu.Item key='Pag5'><Link to={`${this.props.match.url}/ui5`}>ui5</Link></Menu.Item>
+                    <Menu.Item key='Pag6'><Link to={`${this.props.match.url}/ui6`}>ui6</Link></Menu.Item>
+                    <Menu.Item key='Pag7'><Link to={`${this.props.match.url}/ui7`}>ui7</Link></Menu.Item>
+                    <Menu.Item key='Pag8'><Link to={`${this.props.match.url}/ui8`}>ui8</Link></Menu.Item>
                 </Menu>
                 <div>
                     <Route path="*ui1" component={UI1} />
