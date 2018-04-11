@@ -5,6 +5,7 @@
   "dependencies": {
     "@types/react-redux": "^5.0.15",
     "@types/react-router-dom": "^4.2.6",
+    "@types/react-router-redux": "^5.0.13",
     "@types/superagent": "^3.5.7",
     "antd": "^3.4.1",
     "autoprefixer": "7.1.6",

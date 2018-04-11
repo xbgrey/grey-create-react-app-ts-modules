@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card, Menu } from 'antd';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
 import { connect, ReduxState } from 'src/redux';
 import Page1 from './Page1';
@@ -24,7 +24,8 @@ const red = [
     <Route key={5} path="*page5" component={Page5} />,
     <Route key={6} path="*page6" component={Page6} />,
     <Route key={7} path="*page7" component={Page7} />,
-    <Route key={8} path="*page8" component={Page8} />
+    <Route key={8} path="*page8" component={Page8} />,
+    <Route key={9} render={() => <Redirect to="/page1" />} />
 ];
 
 class Home extends ModulesBasic<IProps, ModulesState> {
@@ -38,10 +39,13 @@ class Home extends ModulesBasic<IProps, ModulesState> {
     }
 
     render() {
+        
         return (
-            <Card title="测试" className={css.App} style={{ width: 800, margin: '20px auto' }} >   
+            <Card title="测试" className={css.App} style={{ width: 800, margin: '20px auto' }} >
                 <Menu mode="horizontal">
-                    <Menu.Item key='Pag1'><Link to='/page1'>Pag1</Link></Menu.Item>
+                    <Menu.Item key='Pag1'><a onClick={()=>{
+                        history 
+                    }} >Pag1</a></Menu.Item>
                     <Menu.Item key='Pag2'><Link to='/page2'>Pag2</Link></Menu.Item>
                     <Menu.Item key='Pag3'><Link to='/page3'>Pag3</Link></Menu.Item>
                     <Menu.Item key='Pag4'><Link to='/page4'>Pag4</Link></Menu.Item>
@@ -51,7 +55,9 @@ class Home extends ModulesBasic<IProps, ModulesState> {
                     <Menu.Item key='Pag8'><Link to='/page8'>Pag8</Link></Menu.Item>
                 </Menu>
                 <div>
-                    {red.map(value=>(value))}
+                <Switch>
+                    {red.map(value => (value))}
+                </Switch>  
                 </div>
             </Card>
         );

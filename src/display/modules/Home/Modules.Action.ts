@@ -17,6 +17,8 @@ class ModulesAction extends ActionBasic<ModulesState> {
 
         const res = await system.webTokenLogin({ 'loginName': 'yiliang', 'password': '123456' });
 
+        
+
         if (res.er) {
             console.log(res.er);
         } else {

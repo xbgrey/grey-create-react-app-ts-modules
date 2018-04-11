@@ -21,5 +21,5 @@ export default class ReduxState {
     public system : SystemNode = reducers.system.reducer as any;
 
     /** 路由数据 */
-    public routes : RoutesINode = reducers.system.reducer as any;
+    public routes : RoutesINode = reducers.routes.reducer as any;
 }

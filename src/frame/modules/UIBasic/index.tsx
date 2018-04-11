@@ -1,10 +1,10 @@
-import ComponentBasic from 'src/frame/component/ComponentBasic';
 import { ActionBasic } from 'src/frame/modules';
+import ComponentBasic from 'src/frame/component/ComponentBasic';
+
 
 /** UI基础类 */
 export default abstract class UIBasic<P, ModulesState, S= {}> extends ComponentBasic<P, S> {
-
-    /** 动作对象 */
+    
     private _action: ActionBasic<ModulesState>;
 
     constructor(props: P, action: ActionBasic<ModulesState>) {

@@ -17,6 +17,7 @@ export default interface IPropsBasic {
         goBack:()=>void,
         goForward:()=>void,
         location:ILocation,
+        push:(path:any, state:any)=>void,
     }
 
     location:ILocation
