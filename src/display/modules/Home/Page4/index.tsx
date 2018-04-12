@@ -1,33 +1,24 @@
 import * as React from 'react';
 import { Card, Menu } from 'antd';
-import { Link, Switch, Redirect } from 'react-router-dom';
-import { Route } from 'src/routes';
+import { Link, Switch } from 'react-router-dom';
+import { ChildReact, Route } from 'src/routes';
 import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
 import { connect, ReduxState } from 'src/redux';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
-import UI1 from './UI.Components1';
-import UI2 from './UI.Components2';
-import UI3 from './UI.Components3';
-import UI4 from './UI.Components4';
-import UI5 from './UI.Components5';
-import UI6 from './UI.Components6';
-import UI7 from './UI.Components7';
-import UI8 from './UI.Components8';
+import ModulesConfig from './Modules.Config';
 
 const css = require('./index.scss');
 
-Route.addNode(
-    'page4',
-    { nodeName: 'page4.ui1', path: "*ui1", component: UI1 },
-    { nodeName: 'page4.ui2', path: "*ui2", component: UI2 },
-    { nodeName: 'page4.ui3', path: "*ui3", component: UI3 },
-    { nodeName: 'page4.ui4', path: "*ui4", component: UI4 },
-    { nodeName: 'page4.ui5', path: "*ui5", component: UI5 },
-    { nodeName: 'page4.ui6', path: "*ui6", component: UI6 },
-    { nodeName: 'page4.ui7', path: "*ui7", component: UI7 },
-    { nodeName: 'page4.ui8', path: "*ui8", component: UI8 },
-    { nodeName: 'page4.index', render: () => <Redirect to={`page4/ui1`} /> }
+Route.addNode(ModulesConfig.ROUTE_PARENT_NAME,
+    { nodeName: 'page4.ui1', path: "*ui1", component: require('./UI.Components1').default },
+    { nodeName: 'page4.ui2', path: "*ui2", component: require('./UI.Components2').default },
+    { nodeName: 'page4.ui3', path: "*ui3", component: require('./UI.Components3').default },
+    { nodeName: 'page4.ui4', path: "*ui4", component: require('./UI.Components4').default },
+    { nodeName: 'page4.ui5', path: "*ui5", component: require('./UI.Components5').default },
+    { nodeName: 'page4.ui6', path: "*ui6", component: require('./UI.Components6').default },
+    { nodeName: 'page4.ui7', path: "*ui7", component: require('./UI.Components7').default },
+    { nodeName: 'page4.ui8', path: "*ui8", component: require('./UI.Components8').default },
 )
 
 class Page4 extends ModulesBasic<IProps, ModulesState> {
@@ -54,7 +45,9 @@ class Page4 extends ModulesBasic<IProps, ModulesState> {
                     <Menu.Item key='Pag7'><Link to={`${match.url}/ui7`}>ui7</Link></Menu.Item>
                     <Menu.Item key='Pag8'><Link to={`${match.url}/ui8`}>ui8</Link></Menu.Item>
                 </Menu>
-                <Switch>{Route.getRouteReact('page4')}</Switch>
+                <Switch>
+                    <ChildReact name={ModulesConfig.ROUTE_PARENT_NAME} index={`${match.url}/ui1`} />
+                </Switch>
             </Card>
         );
     }

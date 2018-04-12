@@ -1,7 +1,4 @@
-import * as React from 'react';
 import { INode, IRoute } from '.';
-import { Route } from 'react-router-dom';
-// import { MyStore } from 'src/redux';
 
 const ROOT_NAME: string = 'root';
 
@@ -32,20 +29,6 @@ function getNodeChilds(name: string): INode[] {
         }
     }
     return sum;
-}
-
-/**
- * 获取路由的React结构
- * @param name 节点名称
- */
-function getRouteReact(name: string) {
-
-    const routeList: INode[] = getNodeChilds(name);
-    const routeReact: JSX.Element[] = [];
-    for (let i = 0; i < routeList.length; i++) {
-        routeReact.push(<Route key={i} {...routeList[i].route} />)
-    }
-    return routeReact.map((value) => value);
 }
 
 /** 删除节点 */
@@ -86,6 +69,5 @@ export default {
     addNode,
     getNode,
     getNodeChilds,
-    getRouteReact,
     ROOT_NAME,
 }

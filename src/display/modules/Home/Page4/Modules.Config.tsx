@@ -12,6 +12,9 @@ const columns = [{
     key: 'address',
 }];
 
+const ROUTE_PARENT_NAME = 'page4';
+
 export default {
     columns,
+    ROUTE_PARENT_NAME,
 };

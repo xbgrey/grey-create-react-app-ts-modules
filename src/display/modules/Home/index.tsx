@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card, Menu } from 'antd';
-import { Link, Switch, Redirect } from 'react-router-dom';
+import { Link, Switch } from 'react-router-dom';
 import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
 import { connect, ReduxState } from 'src/redux';
 import Page1 from './Page1';
@@ -13,21 +13,20 @@ import Page7 from './Page7';
 import Page8 from './Page8';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
-import { Route } from 'src/routes';
+import { Route, ChildReact } from 'src/routes';
 
 const css = require('./index.scss');
 
 Route.addNode(
     Route.ROOT_NAME,
-    { nodeName:'page1' , path: '*page1', component: Page1 },
-    { nodeName:'page2' , path: '*page2', component: Page2 },
-    { nodeName:'page3' , path: '*page3', component: Page3 },
-    { nodeName:'page4' , path: '*page4', component: Page4 },
-    { nodeName:'page5' , path: '*page5', component: Page5 },
-    { nodeName:'page6' , path: '*page6', component: Page6 },
-    { nodeName:'page7' , path: '*page7', component: Page7 },
-    { nodeName:'page8' , path: '*page8', component: Page8 },
-    { nodeName:'index' , render: () => <Redirect to="/page1" /> }
+    { nodeName: 'page1', path: '/page1', component: Page1 },
+    { nodeName: 'page2', path: '/page2', component: Page2 },
+    { nodeName: 'page3', path: '/page3', component: Page3 },
+    { nodeName: 'page4', path: '/page4', component: Page4 },
+    { nodeName: 'page5', path: '/page5', component: Page5 },
+    { nodeName: 'page6', path: '/page6', component: Page6 },
+    { nodeName: 'page7', path: '/page7', component: Page7 },
+    { nodeName: 'page8', path: '/page8', component: Page8 },
 );
 
 class Home extends ModulesBasic<IProps, ModulesState> {
@@ -42,7 +41,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
 
     render() {
         return (
-            <Card title="测试" className={css.App+' App22'} style={{ width: 800, margin: '20px auto' }} >
+            <Card title="测试" className={css.App + ' App22'} style={{ width: 800, margin: '20px auto' }} >
                 <Menu mode="horizontal">
                     <Menu.Item key='Pag1'><a onClick={() => {
                         ModulesAction.fnSubmit()
@@ -56,7 +55,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
                     <Menu.Item key='Pag8'><Link to='/page8'>Pag8</Link></Menu.Item>
                 </Menu>
                 <Switch>
-                    {Route.getRouteReact(Route.ROOT_NAME)}
+                    <ChildReact name={Route.ROOT_NAME}/>
                 </Switch>
             </Card>
         );
