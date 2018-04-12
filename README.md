@@ -1,7 +1,7 @@
 ## 技术线
   * typescript
   * sass
-  * sass-modules
+  * css-modules
   * react
   * react-router-dom
   * react-redux
