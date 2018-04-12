@@ -16,9 +16,7 @@ class ModulesAction extends ActionBasic<ModulesState> {
         this.getDispatchProxy(reducers.user.ActionTypes.fnSetUserInfo)(user);
 
         const res = await system.webTokenLogin({ 'loginName': 'yiliang', 'password': '123456' });
-
         
-
         if (res.er) {
             console.log(res.er);
         } else {

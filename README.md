@@ -1,10 +1,12 @@
 ## 技术线
   * typescript
   * sass
+  * sass-modules
   * react
   * react-router-dom
   * react-redux
   * redux-act
+  * superagent
   * antd
   * moment
 
@@ -31,6 +33,7 @@ yarn build
     * Routes（路由的跟配置）
   * frame （全站底层类）
   * redux （全局状态管理的扩展）
+  * routes (全局路由管理)
   * utils （全站和业务无关的工具类）
 
 <br/><br/>

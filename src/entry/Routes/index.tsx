@@ -1,11 +1,12 @@
 import * as React from 'react';
 import modules from 'src/display/modules';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import { history } from 'src/routes';
 
 const Routes = () => (
-    <BrowserRouter>
+    <Router history={history}>
         <Route path="/" component={modules.Home} />
-    </BrowserRouter>
+    </Router>
 );
 
 export default Routes;

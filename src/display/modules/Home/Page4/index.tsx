@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Card, Menu } from 'antd';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Link, Switch, Redirect } from 'react-router-dom';
+import { Route } from 'src/routes';
 import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
 import { connect, ReduxState } from 'src/redux';
 import ModulesState from './Modules.State';
@@ -16,6 +17,19 @@ import UI8 from './UI.Components8';
 
 const css = require('./index.scss');
 
+Route.addNode(
+    'page4',
+    { nodeName: 'page4.ui1', path: "*ui1", component: UI1 },
+    { nodeName: 'page4.ui2', path: "*ui2", component: UI2 },
+    { nodeName: 'page4.ui3', path: "*ui3", component: UI3 },
+    { nodeName: 'page4.ui4', path: "*ui4", component: UI4 },
+    { nodeName: 'page4.ui5', path: "*ui5", component: UI5 },
+    { nodeName: 'page4.ui6', path: "*ui6", component: UI6 },
+    { nodeName: 'page4.ui7', path: "*ui7", component: UI7 },
+    { nodeName: 'page4.ui8', path: "*ui8", component: UI8 },
+    { nodeName: 'page4.index', render: () => <Redirect to={`page4/ui1`} /> }
+)
+
 class Page4 extends ModulesBasic<IProps, ModulesState> {
 
     /** 组建状态 */
@@ -27,32 +41,20 @@ class Page4 extends ModulesBasic<IProps, ModulesState> {
     }
 
     render() {
-        if(this.props.location.pathname === this.props.match.url){
-            return <Redirect to={`${this.props.match.url}/ui1`}/>
-        }
-
+        const { match } = this.props;
         return (
             <Card title="Page4" className={css.App} style={{ width: 800, margin: '20px auto' }} >
                 <Menu mode="horizontal">
-                    <Menu.Item key='Pag1'><Link to={`${this.props.match.url}/ui1`}>ui1</Link></Menu.Item>
-                    <Menu.Item key='Pag2'><Link to={`${this.props.match.url}/ui2`}>ui2</Link></Menu.Item>
-                    <Menu.Item key='Pag3'><Link to={`${this.props.match.url}/ui3`}>ui3</Link></Menu.Item>
-                    <Menu.Item key='Pag4'><Link to={`${this.props.match.url}/ui4`}>ui4</Link></Menu.Item>
-                    <Menu.Item key='Pag5'><Link to={`${this.props.match.url}/ui5`}>ui5</Link></Menu.Item>
-                    <Menu.Item key='Pag6'><Link to={`${this.props.match.url}/ui6`}>ui6</Link></Menu.Item>
-                    <Menu.Item key='Pag7'><Link to={`${this.props.match.url}/ui7`}>ui7</Link></Menu.Item>
-                    <Menu.Item key='Pag8'><Link to={`${this.props.match.url}/ui8`}>ui8</Link></Menu.Item>
+                    <Menu.Item key='Pag1'><Link to={`${match.url}/ui1`}>ui1</Link></Menu.Item>
+                    <Menu.Item key='Pag2'><Link to={`${match.url}/ui2`}>ui2</Link></Menu.Item>
+                    <Menu.Item key='Pag3'><Link to={`${match.url}/ui3`}>ui3</Link></Menu.Item>
+                    <Menu.Item key='Pag4'><Link to={`${match.url}/ui4`}>ui4</Link></Menu.Item>
+                    <Menu.Item key='Pag5'><Link to={`${match.url}/ui5`}>ui5</Link></Menu.Item>
+                    <Menu.Item key='Pag6'><Link to={`${match.url}/ui6`}>ui6</Link></Menu.Item>
+                    <Menu.Item key='Pag7'><Link to={`${match.url}/ui7`}>ui7</Link></Menu.Item>
+                    <Menu.Item key='Pag8'><Link to={`${match.url}/ui8`}>ui8</Link></Menu.Item>
                 </Menu>
-                <div>
-                    <Route path="*ui1" component={UI1} />
-                    <Route path="*ui2" component={UI2} />
-                    <Route path="*ui3" component={UI3} />
-                    <Route path="*ui4" component={UI4} />
-                    <Route path="*ui5" component={UI5} />
-                    <Route path="*ui6" component={UI6} />
-                    <Route path="*ui7" component={UI7} />
-                    <Route path="*ui8" component={UI8} />
-                </div>
+                <Switch>{Route.getRouteReact('page4')}</Switch>
             </Card>
         );
     }

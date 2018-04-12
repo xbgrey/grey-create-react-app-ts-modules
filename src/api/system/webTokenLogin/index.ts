@@ -2,6 +2,7 @@ import { Agent, Request, Response } from 'src/frame/server';
 import { Urls } from 'src/entry/constant';
 import { CallType } from 'src/utils/ajax';
 import IData from './IData';
+import Data from './Data';
 import IOptions from './IOptions';
 
 /** 
@@ -12,5 +13,7 @@ import IOptions from './IOptions';
 export default async function webTokenLogin(option: IOptions): Promise<Response<IData>> {
     const req: Request = new Request(CallType.POST, Urls.webTokenLogin, option);
     const res: Response<IData> = await Agent.instance.callGlobal(req);
-    return res;
+    const re = new Response<IData>();
+    re.body = new Data(res);
+    return re;
 }
