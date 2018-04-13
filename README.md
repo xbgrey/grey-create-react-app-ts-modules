@@ -22,8 +22,9 @@ yarn build
 ### 创建模块
 yarn cre m [目录] [模块名称] 
 
-*例子
->yarn cre m . Demo
+例子
+>yarn cre m . Demo（在src/display/modules下创建一个名为Demo的模块）<br>
+>yarn cre m /src Demo（在src下创建一个名为Demo的模块）
 
 ### 目录结构
 * src
