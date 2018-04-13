@@ -4,9 +4,11 @@
   * sass
   * css-modules
   * react
+  * react-router
   * react-router-dom
-  * react-redux
+  * redux
   * redux-act
+  * react-redux
   * superagent
   * antd
   * moment

@@ -12,5 +12,5 @@ function randomABC(len: number = 10): string {
 }
 
 export default {
-    randomABC
+    randomABC,
 };
