@@ -1,5 +1,6 @@
 ## 使用技术
   * typescript
+  * tslint
   * sass
   * css-modules
   * react
