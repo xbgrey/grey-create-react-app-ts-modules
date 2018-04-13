@@ -4,14 +4,15 @@ import { NodeEnvType } from 'src/entry/constant';
 import { Agent, Request } from 'src/frame/server';
 
 export default abstract class AipBasic<O, D> {
+    
     constructor() {
-        this.run = this.run.bind(this);
+        this.api = this.api.bind(this);
     }
 
     /**
      * 请求头（全局）
      */
-    private getDomainGlobal = (): string => {
+    private get domain(): string {
         const { config, env } = MyStore.instance.getState();
         switch (env.NODE_ENV) {
             case NodeEnvType.开发环境:
@@ -48,7 +49,7 @@ export default abstract class AipBasic<O, D> {
             ...request,
             options: this.getOptions(request.options)
         };
-        return await Agent.instance.call(request, this.getDomainGlobal(), mock);
+        return await Agent.instance.call(request, this.domain, mock);
     }
 
     /** 执行api */

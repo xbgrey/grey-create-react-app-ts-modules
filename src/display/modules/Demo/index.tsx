@@ -7,7 +7,7 @@ import UIComponents from './UI.Components';
 
 const css = require('./index.scss');
 
-class Home extends ModulesBasic<IProps, ModulesState> {
+class Demo extends ModulesBasic<IProps, ModulesState> {
 
     /** 组建状态 */
     public state: ModulesState = new ModulesState();
@@ -39,4 +39,4 @@ interface IProps extends IReduxStatePart, IPropsBasic {
 
 export default connect((state: ReduxState): IReduxStatePart => ({
     /** 对IReduxStatePart接口的实现 */
-}))(Home);
+}))(Demo);

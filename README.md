@@ -19,6 +19,12 @@ yarn start
 ### 编译
 yarn build
 
+### 创建模块
+yarn cre m [目录] [模块名称] 
+
+*例子
+>yarn cre m . Demo
+
 ### 目录结构
 * src
   * aip （所有和全局数据以及后端交互但是不和显示层相关的逻辑）
