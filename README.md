@@ -1,4 +1,4 @@
-## 技术线
+## 使用技术
   * typescript
   * sass
   * css-modules
