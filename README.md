@@ -19,14 +19,15 @@ yarn start 或者 npm start
 ### 编译
 yarn build 或者 npm run build
 
-### 创建显示模块
+### 代码生成器
+* 创建显示模块
 yarn cre m [目录] [模块名称] 或者 npm run cre m [目录] [模块名称] 
 
 例子
 >yarn cre m . Demo（在src/display/modules下创建一个名为Demo的模块）<br>
 >yarn cre m /src Demo（在src下创建一个名为Demo的模块）
 
-### 创建api模块
+* 创建api模块
 yarn cre a [目录] [模块名称] 或者 npm run cre a [目录] [模块名称] 
 
 例子
