@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require("fs");
 const root = '../../src';
-const relatively = 'display/modules';
+const relatively = 'api';
 
 module.exports = function (modulePath, name) {
 
@@ -14,8 +14,6 @@ module.exports = function (modulePath, name) {
         console.log('没有输入模块名称');
         return;
     }
-
-    name = name.substr(0,1).toUpperCase()+name.substr(1);
 
     //判断是站点跟，还是相对display/modules路径
     if (modulePath.indexOf('/') === 0) {
@@ -36,17 +34,12 @@ module.exports = function (modulePath, name) {
         console.log('目录创建失败');
     }
 
-    //写scss
-    writeTemplate(modulePath, 'index.scss', process);
-    writeTemplate(modulePath, 'index.tsx', process);
-    writeTemplate(modulePath, 'Modules.Action.ts', process);
-    writeTemplate(modulePath, 'Modules.Config.tsx', process);
-    writeTemplate(modulePath, 'Modules.Route.tsx', process);
-    writeTemplate(modulePath, 'Modules.State.ts', process);
-    writeTemplate(modulePath, 'UI.Components.tsx', process);
+    writeTemplate(modulePath, 'IData.ts', process);
+    writeTemplate(modulePath, 'index.ts', process);
+    writeTemplate(modulePath, 'IOptions.ts', process);
 
     function process(tem){
-        return tem.replace(/\{\{name\}\}/g, name);
+        return tem.replace(/\{\{name\}\}/g, name.substr(0,1).toUpperCase()+name.substr(1));
     }
 }
 

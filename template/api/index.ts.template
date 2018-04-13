@@ -1,0 +1,40 @@
+import { Request, Response } from 'src/frame/server';
+import { Urls } from 'src/entry/constant';
+import { CallType } from 'src/utils/ajax';
+import ApiBasic from 'src/api/ApiBasic';
+import IData from './IData';
+import IOptions from './IOptions';
+
+/**
+ * 这里位置描述下api的内容是什么
+ * 如果数据有时间格式，统一转换成 moment 对象
+ **/
+class {{name}} extends ApiBasic<IOptions, IData> {
+    
+    /** api逻辑的实现入口 */
+    public async api(option: IOptions): Promise<Response<IData>> {
+        
+        const req: Request = new Request(CallType.POST, Urls/*无端API地址*/, option);
+        
+        let data = await this.call(req);
+
+        // 去掉注释开启数据加工
+        // if(data.er){
+        //     data = new Response<IData>(data.er);
+        // }else{
+        //     data = new Response<IData>(data.er, new Data(data.body));
+        // }
+
+        return data;
+    }
+}
+
+/** 对IData接口的实现 */
+// class Data implements IData{
+//
+//     /** 构造函数 */
+//     constructor(body:any) {
+//     }
+// }
+
+export default new {{name}}().run;
