@@ -4,11 +4,11 @@ import Node from './Node';
 
 const reducer = createReducer(
     {
-        [ActionTypes.fnSetUserInfo as any]:(state, payload) => {
+        [ActionTypes.fnSetUserInfo as any]: (state, payload) => {
             return {
                 ...state,
                 userInfo: payload,
-            }
+            };
         },
     },
     new Node()

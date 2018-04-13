@@ -3,11 +3,11 @@ import ActionTypes from './ActionTypes';
 
 const reducer = createReducer(
     {
-        [ActionTypes.addNode as any]:(state:Node, url:string) => {
+        [ActionTypes.addNode as any]: (state: Node, url: string) => {
             return state;
         },
 
-        [ActionTypes.removeNode as any]:(state:Node, url:string) => {
+        [ActionTypes.removeNode as any]: (state: Node, url: string) => {
             return state;
         },
     },

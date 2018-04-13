@@ -17,7 +17,7 @@ module.exports = function (modulePath, name) {
 
     name = name.substr(0,1).toUpperCase()+name.substr(1);
 
-    //判断是站点跟，还是相对display/modules路径
+    // 判断是站点跟，还是相对display/modules路径
     if (modulePath.indexOf('/') === 0) {
         modulePath = path.resolve(__dirname, root, modulePath.slice(1), name);
     } else {

@@ -19,4 +19,4 @@ export default {
 
     /** 路由数据 */
     routes,
-}
+};

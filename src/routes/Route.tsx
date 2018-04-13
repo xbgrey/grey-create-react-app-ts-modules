@@ -13,7 +13,7 @@ const routelist: INode[] = [];
 function getNode(name: string): INode {
     for (let i = 0; i < routelist.length; i++) {
         if (routelist[i].name === name) {
-            return routelist[i]
+            return routelist[i];
         }
     }
     return null;
@@ -42,11 +42,11 @@ function getChildReact(name: string, index?: string): JSX.Element[] {
     const routeList: INode[] = getNodeChilds(name);
     const routeReact: JSX.Element[] = [];
     for (let i = 0; i < routeList.length; i++) {
-        routeReact.push(<Route key={i} {...routeList[i].route} />)
+        routeReact.push(<Route key={i} {...routeList[i].route} />);
     }
 
     if (index) {
-        routeReact.push(<Route key='index' render={() => <Redirect to={index} />} />)
+        routeReact.push(<Route key="index" render={() => <Redirect to={index} />} />);
     }
 
     return routeReact.map((value) => value);
@@ -74,7 +74,7 @@ function addNode(parentName: string, ...route: IRoute[]) {
                 name: name,
                 parent: parentName,
                 route: value,
-            })
+            });
         }
     });
     updateRedux();
@@ -82,7 +82,7 @@ function addNode(parentName: string, ...route: IRoute[]) {
 
 /** 更新全局节点 */
 function updateRedux() {
-
+    console.log('updateRedux');
 }
 
 export default {
@@ -92,4 +92,4 @@ export default {
     getNodeChilds,
     getChildReact,
     ROOT_NAME,
-}
+};

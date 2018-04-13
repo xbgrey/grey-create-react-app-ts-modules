@@ -3,10 +3,10 @@
  * @param {*} value 被复制的对象
  * @returns {*} 对象副本 
  */
-function getCopy(value:any):any{
+function getCopy(value: any): any {
     if (value instanceof Object) {
-        return JSON.parse(JSON.stringify(value))
-    }else{
+        return JSON.parse(JSON.stringify(value));
+    } else {
         return value;
     }
 }
@@ -16,7 +16,7 @@ function getCopy(value:any):any{
  * @param obj 
  * @returns 加工后的对象
  */
-const getClearBlankParas = (obj:any):any => {
+const getClearBlankParas = (obj: any): any => {
     if (obj instanceof Object) {
         let ret = {};
         for (const item in obj) {
@@ -25,7 +25,7 @@ const getClearBlankParas = (obj:any):any => {
             }
         }
         return ret;
-    }else{
+    } else {
         return obj;
     }
 };
@@ -33,5 +33,4 @@ const getClearBlankParas = (obj:any):any => {
 export default {
     getClearBlankParas,
     getCopy,
-}
-
+};

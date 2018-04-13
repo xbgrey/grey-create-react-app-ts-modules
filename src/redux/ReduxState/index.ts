@@ -12,14 +12,14 @@ export default class ReduxState {
     public user: UserNode = reducers.user.reducer as any;
 
     /** 环境数据 */
-    public env:EnvINode = reducers.env.reducer as any;
+    public env: EnvINode = reducers.env.reducer as any;
 
     /** 配置数据 */
     public config: ConfigINode = reducers.config.reducer as any;
 
     /** 系统数据 */
-    public system : SystemNode = reducers.system.reducer as any;
+    public system: SystemNode = reducers.system.reducer as any;
 
     /** 路由数据 */
-    public routes : RoutesINode = reducers.routes.reducer as any;
+    public routes: RoutesINode = reducers.routes.reducer as any;
 }

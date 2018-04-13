@@ -12,7 +12,6 @@ export default class MyStore {
         if (MyStore._instance) {
             throw ('[redux.Store]对象为单利');
         } else {
-            MyStore._instance = this;
             this.initialization();
         }
     }
@@ -31,16 +30,17 @@ export default class MyStore {
     public dispatch = (type: EmptyActionCreator, value: any, callBack?: () => void) => {
         const unsubscribe = this._store.subscribe(() => {
             unsubscribe();
-            if(typeof callBack === 'function')
+            if (typeof callBack === 'function') {
                 callBack();
-        })
+            }
+        });
         this._store.dispatch(type.call(this, value));
     }
 
     /**
      * 返回应用当前的 state 树
      */
-    public getState(): ReduxState{
+    public getState(): ReduxState {
         return this._store.getState();
     }
 
@@ -50,7 +50,7 @@ export default class MyStore {
     private initialization = (): void => {
         this._store = createStore(
             combineReducers<ReduxState>(new ReduxState() as any),
-            window['$$_kxl_env'].NODE_ENV!=='production' && window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__']()
+            window['$$_kxl_env'].NODE_ENV !== 'production' && window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__']()
         );
     }
 
@@ -60,8 +60,8 @@ export default class MyStore {
     /** 获取当前实例 */
     public static get instance(): MyStore {
         if (!MyStore._instance) {
-            new MyStore();
+            MyStore._instance = new MyStore();
         }
         return MyStore._instance;
     }
-};
+}

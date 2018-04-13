@@ -10,12 +10,12 @@ import { JSObject } from 'src/utils/kit';
  * @param params 参数
  * @param options 请求头
  */
-function call(type:CallType, uri:string, fnCallback:(er:any, body:any)=>void, params:any, options:any = {}) {
+function call(type: CallType, uri: string, fnCallback: (er: any, body: any) => void, params: any, options: any = {}) {
     options = {
         'Content-Type': 'application/json',
         ...options,
     };
-    
+
     params = JSObject.getClearBlankParas(params);
 
     request[type](uri)
@@ -24,11 +24,12 @@ function call(type:CallType, uri:string, fnCallback:(er:any, body:any)=>void, pa
             if (err) {
                 fnCallback(err, null);
             } else {
-                fnCallback(null, res.body);}
+                fnCallback(null, res.body);
+            }
         })
         .timeout(5000);
 }
 
 export default {
     call
-}
+};

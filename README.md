@@ -41,10 +41,11 @@ yarn cre a [目录] [模块名称] 或者 npm run cre a [目录] [模块名称]
   * aip （所有和全局数据以及后端交互但是不和显示层相关的逻辑）
     * system（系统通用api）
     * user（用户相关api）
+  * dataModel（数据模型-回重复实例化，并且参与业务逻辑的数据对象）
   * display（显示对象）
     * components（组件）
-    * modules（模块）
-    * part（显示片段）
+    * modules（模块-地理的业务逻辑，通过路由切换）
+    * part（显示片段-可以同时出现多个，有很独立的业务逻辑）
   * entry（类似条目的配置）
     * constant（全站用的常量）
     * Routes（路由的跟配置）

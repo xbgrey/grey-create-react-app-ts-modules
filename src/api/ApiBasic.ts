@@ -4,7 +4,7 @@ import { NodeEnvType } from 'src/entry/constant';
 import { Agent, Request } from 'src/frame/server';
 
 export default abstract class AipBasic<O, D> {
-    
+
     constructor() {
         this.api = this.api.bind(this);
     }
@@ -38,13 +38,13 @@ export default abstract class AipBasic<O, D> {
         // token是否存在
         if (token) {
             res['Authorization'] = token; // 添加用户token
-        };
+        }
 
         return res;
     }
 
     /** 像服务器发送请求 */
-    public call = async (request: Request, mock: boolean = false) => {
+    public call = async (request: Request, mock: boolean = false): Promise<any> => {
         request = {
             ...request,
             options: this.getOptions(request.options)
@@ -59,6 +59,6 @@ export default abstract class AipBasic<O, D> {
 
     /** 抽象方法（子类api逻辑的实现入口） */
     public async api(option: O): Promise<Response<D>> {
-        throw "请在这里实现API的入口";
+        throw '请在这里实现API的入口';
     }
 }

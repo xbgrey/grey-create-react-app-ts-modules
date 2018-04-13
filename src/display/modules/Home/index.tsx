@@ -17,12 +17,12 @@ class Home extends ModulesBasic<IProps, ModulesState> {
         super(props, ModulesAction);
     }
 
-    //这里尽量只调用UI组件
+    // 这里尽量只调用UI组件
     render() {
-        const { } = this.props;//获取你的props数据
+        const { } = this.props; // 获取你的props数据
         return (
             <div className={css.modules}>
-                <UIComponents/>
+                <UIComponents />
             </div>
         );
     }
@@ -35,7 +35,6 @@ interface IReduxStatePart {
 /** 组建的props接口 */
 interface IProps extends IReduxStatePart, IPropsBasic {
 }
-
 
 export default connect((state: ReduxState): IReduxStatePart => ({
     /** 对IReduxStatePart接口的实现 */

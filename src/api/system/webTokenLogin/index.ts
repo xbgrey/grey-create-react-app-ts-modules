@@ -8,14 +8,14 @@ import IOptions from './IOptions';
 /**
  * 这里位置描述下api的内容是什么
  * 如果数据有时间格式，统一转换成 moment 对象
- **/
+ */
 class WebTokenLogin extends ApiBasic<IOptions, IData> {
-    
+
     /** api逻辑的实现入口 */
     public async api(option: IOptions): Promise<Response<IData>> {
-        
+
         const req: Request = new Request(CallType.POST, Urls.webTokenLogin, option);
-        
+
         let data = await this.call(req);
 
         // 去掉注释开启数据加工

@@ -7,26 +7,26 @@ export default interface IPropsBasic {
         params: any,
         path: string,
         url: string,
-    }
+    };
 
     /**  */
     history?: {
         action: string,
         block: () => void,
-        go: (n) => void,
+        go: (n: number) => void,
         goBack: () => void,
         goForward: () => void,
         location: ILocation,
         push: (path: any, state?: any) => void,
-    }
+    };
 
-    location?: ILocation
+    location?: ILocation;
 }
 
 interface ILocation {
-    hash: string,
-    key: string,
-    pathname: string,
-    search: string,
-    state: any,
+    hash: string;
+    key: string;
+    pathname: string;
+    search: string;
+    state: any;
 }

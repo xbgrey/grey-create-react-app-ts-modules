@@ -30,8 +30,9 @@ export default class Agent {
      */
     private runCallback = (value: any, ...fns: Array<(value: any) => void>) => {
         fns.forEach(fn => {
-            if(typeof fn === 'function')
+            if (typeof fn === 'function') {
                 fn(value);
+            }
         });
     }
 
