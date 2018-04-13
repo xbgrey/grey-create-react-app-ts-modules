@@ -53,8 +53,8 @@ export default class Agent {
      * @param domain 请求地址头
      * @param mock 是否用mock数据
      */
-    public call = (request: Request, domain: string, mock: boolean): Promise<Response> => {
-        return new Promise((resolve: (value: Response) => void) => {
+    public call = (request: Request, domain: string, mock: boolean): Promise<Response<any>> => {
+        return new Promise((resolve: (value: Response<any>) => void) => {
 
             MyStore.instance.dispatch(reducers.system.ActionTypes.addLoading, request.uri); // 添加loading
 
@@ -63,7 +63,7 @@ export default class Agent {
 
                 MyStore.instance.dispatch(reducers.system.ActionTypes.removeLoading, request.uri); // 删除loading
 
-                const info: Response = new Response(); // 返回数据
+                const info: Response<any> = new Response(); // 返回数据
 
                 // 是否失败
                 if (er) {

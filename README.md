@@ -11,16 +11,16 @@
   * moment
 
 ### 安装
-yarn install
+yarn install 或者 npm install
 
 ### 启动
-yarn start
+yarn start 或者 npm start
 
 ### 编译
-yarn build
+yarn build 或者 npm run build
 
 ### 创建模块
-yarn cre m [目录] [模块名称] 
+yarn cre m [目录] [模块名称] 或者 npm run cre m [目录] [模块名称] 
 
 例子
 >yarn cre m . Demo（在src/display/modules下创建一个名为Demo的模块）<br>

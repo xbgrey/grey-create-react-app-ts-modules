@@ -3,7 +3,7 @@ import { Response } from '../';
 import { Urls } from 'src/entry/constant'
 
 /** Api请求数据 */
-export default class ApiRequest {
+export default class Request {
     
     /** 请求类型 */
     public type:CallType = CallType.GET;
@@ -12,7 +12,7 @@ export default class ApiRequest {
     public uri:Urls;
 
     /** 回掉函数 */
-    public callback:(value:Response)=>void = null;
+    public callback:(value:Response<any>)=>void = null;
 
     /** 请求参数 */
     public params:any = {};

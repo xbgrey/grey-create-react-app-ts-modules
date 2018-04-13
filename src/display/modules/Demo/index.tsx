@@ -22,7 +22,7 @@ class Demo extends ModulesBasic<IProps, ModulesState> {
         const { } = this.props;//获取你的props数据
         return (
             <div className={css.modules}>
-                <UIComponents/>
+                <UIComponents id='adf' />
             </div>
         );
     }

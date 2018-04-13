@@ -30,7 +30,6 @@ interface IProps extends IReduxStatePart, IPropsBasic {
 }
 
 //对IReduxStatePart的实现并绑定到组件上
-export default connect((state: ReduxState): IReduxStatePart => {
-    return {
-    };
-})(UIComponents);
+export default connect((state: ReduxState): IReduxStatePart => ({
+    
+}))(UIComponents);
