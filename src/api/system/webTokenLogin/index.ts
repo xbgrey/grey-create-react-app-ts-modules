@@ -1,19 +1,16 @@
-import { Agent, Request, Response } from 'src/frame/server';
+import { Request, Response } from 'src/frame/server';
 import { Urls } from 'src/entry/constant';
 import { CallType } from 'src/utils/ajax';
 import IData from './IData';
-import Data from './Data';
 import IOptions from './IOptions';
+import ApiBasic from 'src/api/ApiBasic';
 
-/** 
- * 用户登录
- * @param target 请求发起对象 
- * @param option 参数
- */
-export default async function webTokenLogin(option: IOptions): Promise<Response<IData>> {
-    const req: Request = new Request(CallType.POST, Urls.webTokenLogin, option);
-    const res: Response<IData> = await Agent.instance.callGlobal(req);
-    const re = new Response<IData>();
-    re.body = new Data(res);
-    return re;
+/** 用户登录 */
+class WebTokenLogin extends ApiBasic<IOptions, IData> {
+    public async api(option: IOptions): Promise<Response<IData>> {
+        const req: Request = new Request(CallType.POST, Urls.webTokenLogin, option);
+        return await this.call(req);
+    }
 }
+
+export default new WebTokenLogin().run;

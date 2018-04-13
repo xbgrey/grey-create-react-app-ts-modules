@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card, Menu } from 'antd';
 import { Link, Switch } from 'react-router-dom';
-import { ChildReact, Route } from 'src/routes';
+import { Route } from 'src/routes';
 import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
 import { connect, ReduxState } from 'src/redux';
 import ModulesState from './Modules.State';
@@ -45,9 +45,7 @@ class Page4 extends ModulesBasic<IProps, ModulesState> {
                     <Menu.Item key='Pag7'><Link to={`${match.url}/ui7`}>ui7</Link></Menu.Item>
                     <Menu.Item key='Pag8'><Link to={`${match.url}/ui8`}>ui8</Link></Menu.Item>
                 </Menu>
-                <Switch>
-                    <ChildReact name={ModulesConfig.ROUTE_PARENT_NAME} index={`${match.url}/ui1`} />
-                </Switch>
+                <Switch>{Route.getChildReact(ModulesConfig.ROUTE_PARENT_NAME, `${match.url}/ui1`)}</Switch>
             </Card>
         );
     }

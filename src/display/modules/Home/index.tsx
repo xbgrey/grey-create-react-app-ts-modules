@@ -13,7 +13,7 @@ import Page7 from './Page7';
 import Page8 from './Page8';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
-import { Route, ChildReact } from 'src/routes';
+import { Route } from 'src/routes';
 
 const css = require('./index.scss');
 
@@ -44,7 +44,6 @@ class Home extends ModulesBasic<IProps, ModulesState> {
             <Card title="测试" className={css.App + ' App22'} style={{ width: 800, margin: '20px auto' }} >
                 <Menu mode="horizontal">
                     <Menu.Item key='Pag1'><a onClick={() => {
-                        ModulesAction.fnSubmit()
                     }} >Pag1</a></Menu.Item>
                     <Menu.Item key='Pag2'><Link to='/page2'>Pag2</Link></Menu.Item>
                     <Menu.Item key='Pag3'><Link to='/page3'>Pag3</Link></Menu.Item>
@@ -54,9 +53,7 @@ class Home extends ModulesBasic<IProps, ModulesState> {
                     <Menu.Item key='Pag7'><Link to='/page7'>Pag7</Link></Menu.Item>
                     <Menu.Item key='Pag8'><Link to='/page8'>Pag8</Link></Menu.Item>
                 </Menu>
-                <Switch>
-                    <ChildReact name={Route.ROOT_NAME}/>
-                </Switch>
+                <Switch>{Route.getChildReact(Route.ROOT_NAME, '/page1')}</Switch>
             </Card>
         );
     }

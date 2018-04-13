@@ -1,4 +1,6 @@
+import * as React from 'react';
 import { INode, IRoute } from '.';
+import { Route, Redirect } from 'react-router-dom';
 
 const ROOT_NAME: string = 'root';
 
@@ -18,7 +20,7 @@ function getNode(name: string): INode {
 }
 
 /**
- * 获取节点的孩子列表
+ * 获取路由的获取路由节点
  * @param name 节点名称
  */
 function getNodeChilds(name: string): INode[] {
@@ -29,6 +31,25 @@ function getNodeChilds(name: string): INode[] {
         }
     }
     return sum;
+}
+
+/**
+ * 获取路由的React结构
+ * @param name 节点名称
+ * @param index 首页
+ */
+function getChildReact(name: string, index?: string): JSX.Element[] {
+    const routeList: INode[] = getNodeChilds(name);
+    const routeReact: JSX.Element[] = [];
+    for (let i = 0; i < routeList.length; i++) {
+        routeReact.push(<Route key={i} {...routeList[i].route} />)
+    }
+
+    if (index) {
+        routeReact.push(<Route key='index' render={() => <Redirect to={index} />} />)
+    }
+
+    return routeReact.map((value) => value);
 }
 
 /** 删除节点 */
@@ -69,5 +90,6 @@ export default {
     addNode,
     getNode,
     getNodeChilds,
+    getChildReact,
     ROOT_NAME,
 }
