@@ -4,6 +4,17 @@ import ReduxState from '../ReduxState';
 
 export default class MyStore {
 
+    /** 当前实例 */
+    private static _instance: MyStore;
+
+    /** 获取当前实例 */
+    public static get instance(): MyStore {
+        if (!MyStore._instance) {
+            MyStore._instance = new MyStore();
+        }
+        return MyStore._instance;
+    }
+
     /** redux的跟 */
     private _store: Store<ReduxState>;
 
@@ -52,16 +63,5 @@ export default class MyStore {
             combineReducers<ReduxState>(new ReduxState() as any),
             window['$$_kxl_env'].NODE_ENV !== 'production' && window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__']()
         );
-    }
-
-    /** 当前实例 */
-    private static _instance: MyStore;
-
-    /** 获取当前实例 */
-    public static get instance(): MyStore {
-        if (!MyStore._instance) {
-            MyStore._instance = new MyStore();
-        }
-        return MyStore._instance;
     }
 }

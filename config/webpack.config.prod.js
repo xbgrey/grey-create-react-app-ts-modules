@@ -412,7 +412,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       async: false,
       tsconfig: paths.appTsConfig,
-      // tslint: paths.appTsLint,
+      tslint: paths.appTsLint,
     }),
   ],
   // Some libraries import Node modules but don't use them in the browser.

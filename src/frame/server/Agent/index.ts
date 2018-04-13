@@ -24,31 +24,6 @@ export default class Agent {
     }
 
     /**
-     * 调用回掉函数
-     * @param value 参数
-     * @param fns 函数集合
-     */
-    private runCallback = (value: any, ...fns: Array<(value: any) => void>) => {
-        fns.forEach(fn => {
-            if (typeof fn === 'function') {
-                fn(value);
-            }
-        });
-    }
-
-    /**
-     * 提示消息管理
-     * @param request 请求消息头
-     * @param message 发送的消息
-     */
-    private showMessage = (request: Request, message: string): void => {
-        if (request.isShowModal === false) {
-            return null;
-        }
-        Message.error(message);
-    }
-
-    /**
      * 向服务器发送一个请求
      * @param request 一个请求
      * @param domain 请求地址头
@@ -92,5 +67,30 @@ export default class Agent {
                 Superagent.call(request.type, domain + request.uri, superagentCallback, request.params, request.options);
             }
         });
+    }
+
+    /**
+     * 调用回掉函数
+     * @param value 参数
+     * @param fns 函数集合
+     */
+    private runCallback = (value: any, ...fns: Array<(value: any) => void>) => {
+        fns.forEach(fn => {
+            if (typeof fn === 'function') {
+                fn(value);
+            }
+        });
+    }
+
+    /**
+     * 提示消息管理
+     * @param request 请求消息头
+     * @param message 发送的消息
+     */
+    private showMessage = (request: Request, message: string): void => {
+        if (request.isShowModal === false) {
+            return null;
+        }
+        Message.error(message);
     }
 }
