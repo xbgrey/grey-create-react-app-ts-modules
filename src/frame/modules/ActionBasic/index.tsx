@@ -29,7 +29,7 @@ export default abstract class ActionBasic<ModulesState> {
     }
 
     /** 当前模块的状态 */
-    protected get modulesState(): ModulesState {
+    public get modulesState(): ModulesState {
         if (!this._modulesState) {
             this._modulesState = JSON.parse(JSON.stringify(this.modules.state));
         }

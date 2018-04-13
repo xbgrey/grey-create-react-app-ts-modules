@@ -13,6 +13,11 @@ export default abstract class ModulesBasic<P, ModulesState> extends ComponentBas
         this._action.setMdules(this);
     }
 
+    /** 当前页面的状态 */
+    protected modulesState(): ModulesState {
+        return this._action.modulesState;
+    }
+
     protected get action(): ActionBasic<ModulesState> {
         return this._action;
     }

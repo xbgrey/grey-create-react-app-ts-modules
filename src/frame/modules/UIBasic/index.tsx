@@ -18,7 +18,7 @@ export default abstract class UIBasic<P, ModulesState, S= {}> extends ComponentB
     }
 
     /** 当前页面的状态 */
-    protected rootState(): ModulesState {
-        return null;
+    protected ModulesState(): ModulesState {
+        return this._action.modulesState;
     }
 }
