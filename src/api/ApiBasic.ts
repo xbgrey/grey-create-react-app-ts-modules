@@ -9,6 +9,25 @@ export default abstract class AipBasic<O, D> {
         this.api = this.api.bind(this);
     }
 
+    /** 像服务器发送请求 */
+    public call = async (request: Request, mock: boolean = false): Promise<any> => {
+        request = {
+            ...request,
+            options: this.getOptions(request.options)
+        };
+        return await Agent.instance.call(request, this.domain, mock);
+    }
+
+    /** 执行api */
+    public run = async (option: O): Promise<Response<D>> => {
+        return await this.api(option);
+    }
+
+    /** 抽象方法（子类api逻辑的实现入口） */
+    public async api(option: O): Promise<Response<D>> {
+        throw '请在这里实现API的入口';
+    }
+
     /**
      * 请求头（全局）
      */
@@ -41,24 +60,5 @@ export default abstract class AipBasic<O, D> {
         }
 
         return res;
-    }
-
-    /** 像服务器发送请求 */
-    public call = async (request: Request, mock: boolean = false): Promise<any> => {
-        request = {
-            ...request,
-            options: this.getOptions(request.options)
-        };
-        return await Agent.instance.call(request, this.domain, mock);
-    }
-
-    /** 执行api */
-    public run = async (option: O): Promise<Response<D>> => {
-        return await this.api(option);
-    }
-
-    /** 抽象方法（子类api逻辑的实现入口） */
-    public async api(option: O): Promise<Response<D>> {
-        throw '请在这里实现API的入口';
     }
 }
