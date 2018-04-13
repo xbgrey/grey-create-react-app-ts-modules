@@ -17,8 +17,4 @@ export default abstract class ModulesBasic<P, ModulesState> extends ComponentBas
     protected modulesState(): ModulesState {
         return this._action.modulesState;
     }
-
-    protected get action(): ActionBasic<ModulesState> {
-        return this._action;
-    }
 }

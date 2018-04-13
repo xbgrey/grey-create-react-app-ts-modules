@@ -12,13 +12,8 @@ export default abstract class UIBasic<P, ModulesState, S= {}> extends ComponentB
         this._action = action;
     }
 
-    /** 动作对象 */
-    protected get action(): ActionBasic<ModulesState> {
-        return this._action;
-    }
-
     /** 当前页面的状态 */
-    protected ModulesState(): ModulesState {
+    protected get modulesState(): ModulesState {
         return this._action.modulesState;
     }
 }
