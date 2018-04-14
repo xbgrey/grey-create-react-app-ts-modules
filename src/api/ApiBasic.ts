@@ -24,7 +24,7 @@ export default abstract class AipBasic<O, D> {
     }
 
     /** 抽象方法（子类api逻辑的实现入口） */
-    public async api(option: O): Promise<Response<D>> {
+    protected async api(option: O): Promise<Response<D>> {
         throw '请在这里实现API的入口';
     }
 
