@@ -18,19 +18,23 @@ export default abstract class AipBasic<O, D> {
         return await Agent.instance.call(request, this.domain, mock);
     }
 
-    /** 执行api */
+    /**
+     * 执行api
+     * @param option api 入参
+     */
     public run = async (option: O): Promise<Response<D>> => {
         return await this.api(option);
     }
 
-    /** 抽象方法（子类api逻辑的实现入口） */
+    /** 
+     * 抽象方法（子类api逻辑的实现入口） 
+     * @param option api 入参
+     */
     protected async api(option: O): Promise<Response<D>> {
         throw '请在这里实现API的入口';
     }
 
-    /**
-     * 请求头（全局）
-     */
+    /** 请求头（全局） */
     private get domain(): string {
         const { config, env } = MyStore.instance.getState();
         switch (env.NODE_ENV) {
