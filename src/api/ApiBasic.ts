@@ -1,7 +1,8 @@
 import { MyStore } from 'src/redux';
-import { Response } from 'src/frame/server';
+import { Response } from 'kts-scaffold-framework/server';
+import { Agent, Request } from 'kts-scaffold-framework/server';
+import { reducers } from 'src/redux';
 import { NodeEnvType } from 'src/entry/constant';
-import { Agent, Request } from 'src/frame/server';
 
 export default abstract class AipBasic<O, D> {
 
@@ -11,11 +12,19 @@ export default abstract class AipBasic<O, D> {
 
     /** 像服务器发送请求 */
     public call = async (request: Request, mock: boolean = false): Promise<any> => {
+        
         request = {
             ...request,
             options: this.getOptions(request.options)
         };
-        return await Agent.instance.call(request, this.domain, mock);
+
+        MyStore.instance.dispatch(reducers.system.ActionTypes.addLoading, request.uri); // 添加loading
+        
+        const data = await Agent.instance.call(request, this.domain, mock);
+        
+        MyStore.instance.dispatch(reducers.system.ActionTypes.removeLoading, request.uri); // 删除loading
+        
+        return data;
     }
 
     /**

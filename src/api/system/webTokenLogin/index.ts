@@ -1,4 +1,4 @@
-import { Request, Response } from 'src/frame/server';
+import { Request, Response } from 'kts-scaffold-framework/server';
 import { Urls } from 'src/entry/constant';
 import { CallType } from 'src/utils/ajax';
 import ApiBasic from 'src/api/ApiBasic';

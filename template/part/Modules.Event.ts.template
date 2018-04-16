@@ -1,4 +1,4 @@
-// import { Event, Message } from 'src/frame/message';
+// import { Event, Message } from 'kts-scaffold-framework/message';
 
 /** 例子代码 */
 // class Demo extends Event {

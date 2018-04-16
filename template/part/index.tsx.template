@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
+import { ModulesBasic, IPropsBasic } from 'kts-scaffold-framework/modules';
 import { connect, ReduxState } from 'src/redux';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
