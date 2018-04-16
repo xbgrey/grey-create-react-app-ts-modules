@@ -9,6 +9,6 @@ Route.addNode(
 );
 
 export default {
-    getChildReact:(index:string)=>(Route.getChildReact(Route.ROOT_NAME, index)),
-}
+    getChildReact: (index: string) => (Route.getChildReact(Route.ROOT_NAME, index)),
+};
 */

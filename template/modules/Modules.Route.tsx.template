@@ -1,5 +1,5 @@
 /*
-需要配置路由请打开配置，已下为实例代码
+需要配置路由请打开配置，如果不需要路由请删除本文件
 
 import { Route } from 'src/routes';
 
@@ -9,6 +9,6 @@ Route.addNode(
 );
 
 export default {
-    getChildReact:(index:string)=>(Route.getChildReact(Route.ROOT_NAME, index)),
-}
+    getChildReact: (index: string) => (Route.getChildReact(Route.ROOT_NAME, index)),
+};
 */
