@@ -26,11 +26,11 @@ yarn build 或者 npm run build
 #### 【创建模块】
 yarn cre [模块类型] [目录] [模块名称] <br>
 或者 <br>
-npm run cre a [模块类型] [模块名称] <br>
+npm run cre [模块类型] [目录] [模块名称] <br>
 [模块类型]:
-> m 显示模块  默认路径（src/display/modules）<br>
-> a api模块  默认路径（src/api/system）<br>
-> p 代码片段  默认路径（src/display/part）<br>
+* m 显示模块  默认路径（src/display/modules）<br>
+* a api模块  默认路径（src/api/system）<br>
+* p 代码片段  默认路径（src/display/part）<br>
 
 例子
 >yarn cre m . demo（在src/display/modules 下创建一个名为 demo的模块）<br>
