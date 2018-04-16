@@ -9,6 +9,10 @@ switch (process.argv[2]) {
         require('./api')(process.argv[3], process.argv[4]);
         break;
 
+    case 'p':
+        require('./part')(process.argv[3], process.argv[4]);
+        break;
+
     default:
         console.log('参数错误')
         break;

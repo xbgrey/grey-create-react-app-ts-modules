@@ -23,17 +23,14 @@ yarn start 或者 npm start
 yarn build 或者 npm run build
 
 ### 代码生成器
-#### 【创建显示模块】
-yarn cre m [目录] [模块名称] 或者 npm run cre m [目录] [模块名称] 
-
-例子
->yarn cre m . Demo（在src/display/modules下创建一个名为Demo的模块）<br>
->yarn cre m /src Demo（在src下创建一个名为Demo的模块）
-
--------------------------------------------------------------------------
-
-#### 【创建api模块】
-yarn cre a [目录] [模块名称] 或者 npm run cre a [目录] [模块名称] 
+#### 【创建模块】
+yarn cre [模块类型] [目录] [模块名称] <br>
+或者 <br>
+npm run cre a [模块类型] [模块名称] <br>
+[模块类型]:
+> m 显示模块  默认路径（src/display/modules）<br>
+> a api模块  默认路径（src/api/system）<br>
+> p 代码片段  默认路径（src/display/part）<br>
 
 例子
 >yarn cre a ./system demo（在src/api/system 下创建一个名为 demo的模块）<br>
