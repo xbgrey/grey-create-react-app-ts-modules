@@ -33,8 +33,8 @@ npm run cre a [模块类型] [模块名称] <br>
 > p 代码片段  默认路径（src/display/part）<br>
 
 例子
->yarn cre a ./system demo（在src/api/system 下创建一个名为 demo的模块）<br>
->yarn cre a /src demo（在src下创建一个名为demo的模块）
+>yarn cre m . demo（在src/display/modules 下创建一个名为 demo的模块）<br>
+>yarn cre m /src demo（在src下创建一个名为demo的模块）
 
 ### 目录结构
 * src
