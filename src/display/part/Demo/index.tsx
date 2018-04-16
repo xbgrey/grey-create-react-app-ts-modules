@@ -3,14 +3,18 @@ import { ModulesBasic, IPropsBasic } from 'src/frame/modules';
 import { connect, ReduxState } from 'src/redux';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
+import ModulesEvent from './Modules.Event';
 import UIComponents from './UI.Components';
 
 const css = require('./index.scss');
 
 class Demo extends ModulesBasic<IProps, ModulesState> {
 
+    // 当前模块接收或者发送的消息
+    public static readonly Event = ModulesEvent;
+
     /** 组建状态 */
-    public state: ModulesState = new ModulesState();
+    public readonly state: ModulesState = new ModulesState();
 
     /** 构造函数 */
     constructor(props: IProps) {

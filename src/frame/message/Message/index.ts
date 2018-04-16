@@ -1,5 +1,20 @@
 import Event from '../Event';
 
+class MessageItem {
+
+    /** 消息类型 */
+    public type: string;
+
+    /** 消息方法 */
+    public method: (e: Event) => void;
+
+    /** 构造函数 */
+    constructor(type: string, method: (e: Event) => void) {
+        this.type = type;
+        this.method = method;
+    }
+}
+
 class Message {
 
     private typeId: number = 0;
@@ -18,7 +33,9 @@ class Message {
      */
     public send = (event: Event): void => {
         this.registerList.forEach((item: MessageItem) => {
-            item.method(event);
+            if (event.type === item.type) {
+                item.method(event);
+            }
         });
     }
 
@@ -44,7 +61,7 @@ class Message {
             this.registerList.splice(index, 1);
         }
     }
-    
+
     /**
      * 获取注册列表的索引
      * @param type 消息类型
@@ -57,21 +74,6 @@ class Message {
             }
         }
         return -1;
-    }
-}
-
-class MessageItem {
-
-    /** 消息类型 */
-    public type: string;
-
-    /** 消息方法 */
-    public method: (e: Event) => void;
-
-    /** 构造函数 */
-    constructor(type: string, method: (e: Event) => void) {
-        this.type = type;
-        this.method = method;
     }
 }
 

@@ -1,9 +1,11 @@
 export default class Event {
 
-    private _type: string;
+    public readonly type: string;
 
-    /** 消息类型 */
-    public get type(): string {
-        return this._type;
+    /**
+     * 构造函数
+     */
+    constructor(type: string) {
+        this.type = type;
     }
 }
