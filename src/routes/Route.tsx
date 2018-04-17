@@ -1,10 +1,52 @@
 import * as React from 'react';
-import { INode, IRoute } from '.';
+import { INode, IRoute, INodeTree } from '.';
+import { MyStore, reducers } from 'src/redux';
 import { Route, Redirect } from 'react-router-dom';
 
 const ROOT_NAME: string = 'root';
 
 const routelist: INode[] = [];
+
+/** 获取路由树 */
+function getTree(): any {
+
+    const rootNodeTree: INodeTree[] = [];
+
+    getNodeChilds(ROOT_NAME).forEach((value: INode) => {
+        rootNodeTree.push({
+            nodeName: value.route.nodeName,
+            parent: value.parent,
+            title: value.route.title,
+            path: value.route.path,
+            childList: []
+        });
+    });
+
+    rootNodeTree.forEach((value: INodeTree) => {
+        addChildList(value);
+    });
+
+    function addChildList(nodeTree: INodeTree) {
+        const nodeTreeList: INodeTree[] = [];
+        getNodeChilds(nodeTree.nodeName).forEach((value: INode) => {
+            nodeTreeList.push({
+                nodeName: value.route.nodeName,
+                parent: value.parent,
+                title: value.route.title,
+                path: value.route.path,
+                childList: []
+            });
+        });
+
+        nodeTree.childList = nodeTreeList;
+
+        nodeTreeList.forEach((value: INodeTree) => {
+            addChildList(value);
+        });
+    }
+
+    return rootNodeTree;
+}
 
 /**
  * 获取节点
@@ -12,7 +54,7 @@ const routelist: INode[] = [];
  */
 function getNode(name: string): INode {
     for (let i = 0; i < routelist.length; i++) {
-        if (routelist[i].name === name) {
+        if (routelist[i].route.nodeName === name) {
             return routelist[i];
         }
     }
@@ -55,7 +97,7 @@ function getChildReact(name: string, index?: string): JSX.Element[] {
 /** 删除节点 */
 function removeNode(name: string) {
     for (let i = 0; i < routelist.length; i++) {
-        if (routelist[i].name === name) {
+        if (routelist[i].route.nodeName === name) {
             routelist.splice(i, 1);
         }
     }
@@ -71,7 +113,6 @@ function addNode(parentName: string, ...route: IRoute[]) {
 
         if (value) {
             routelist.push({
-                name: name,
                 parent: parentName,
                 route: value,
             });
@@ -82,7 +123,7 @@ function addNode(parentName: string, ...route: IRoute[]) {
 
 /** 更新全局节点 */
 function updateRedux() {
-    console.log('updateRedux');
+    MyStore.instance.dispatch(reducers.routes.ActionTypes.updateNode, getTree());
 }
 
 export default {
@@ -91,5 +132,6 @@ export default {
     getNode,
     getNodeChilds,
     getChildReact,
+    getTree,
     ROOT_NAME,
 };

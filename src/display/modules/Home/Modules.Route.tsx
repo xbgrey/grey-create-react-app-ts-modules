@@ -3,12 +3,20 @@
 
 import { Route } from 'src/routes';
 
+const parentName: string = ; // 路由的跟节点；
+
 Route.addNode(
-    Route.ROOT_NAME,
-    { nodeName: 'page1', path: '/page1', component: require('./Page1').default },
+    parentName,
+    { nodeName: 'demo', path: '/demo', component: require('./Demo') },
 );
 
 export default {
-    getChildReact: (index: string) => (Route.getChildReact(Route.ROOT_NAME, index)),
+    getChildReact: (index?: string) => {
+        return Route.getChildReact(parentName, index);
+    },
 };
+
+export {
+    Switch
+} from 'react-router-dom';
 */
