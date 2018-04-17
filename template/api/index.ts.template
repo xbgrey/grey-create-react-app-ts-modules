@@ -1,6 +1,6 @@
 import { Request, Response } from 'kts-scaffold-framework/server';
 import { Urls } from 'src/entry/constant';
-import { CallType } from 'src/utils/ajax';
+import { CallType } from 'kts-scaffold-framework/utils/ajax';
 import ApiBasic from 'src/api/ApiBasic';
 import IData from './IData';
 import IOptions from './IOptions';
