@@ -14,9 +14,9 @@ class WebTokenLogin extends ApiBasic<IOptions, IData> {
     /** api逻辑的实现入口 */
     public async api(option: IOptions): Promise<Response<IData>> {
 
-        const req: Request = new Request(CallType.POST, Urls.webTokenLogin, option);
+        const req: Request = new Request(CallType.POST, Urls.webTokenLogin, this.working(option));
 
-        let data = await this.call(req);
+        let data: Response<IData> = await this.call(req);
 
         // 去掉注释开启数据加工
         // if(data.er){
@@ -25,7 +25,17 @@ class WebTokenLogin extends ApiBasic<IOptions, IData> {
         //     data = new Response<IData>(data.er, new Data(data.body));
         // }
 
+        /* ---- 如果有数据处理写在下面 ---- */
+
         return data;
+    }
+
+    /** 
+     * 对入惨加工
+     * @param option 原始如参数
+     */
+    private working(option: IOptions): any {
+        return option;
     }
 }
 
