@@ -20,7 +20,11 @@ yarn install 或者 npm install
 yarn start 或者 npm start
 
 ### 编译
-yarn build 或者 npm run build
+yarn build [环境参数] 或者 npm run build [环境参数]
+[环境参数]
+* debug 开发环境
+* production 生产环境
+* test 测速环境
 
 ### 代码生成器
 #### 【创建模块】

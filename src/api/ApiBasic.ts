@@ -40,7 +40,7 @@ export default abstract class AipBasic<O, D> {
      * @param option api 入参
      */
     protected async api(option: O): Promise<Response<D>> {
-        throw '请在这里实现API的入口';
+        throw '请重写api方法';
     }
 
     /** 请求头（全局） */
