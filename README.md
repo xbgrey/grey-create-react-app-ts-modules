@@ -12,6 +12,7 @@
   * superagent
   * antd
   * moment
+  * kts-scaffold-framework （公司自己的底层包）[参看](https://github.com/kingxunlian/kts-scaffold-framework)
 
 ### 安装
 yarn install 或者 npm install
