@@ -19,11 +19,13 @@ class WebTokenLogin extends ApiBasic<IOptions, IData> {
         let data: Response<IData> = await this.call(req);
 
         // 去掉注释开启数据加工
-        // if(data.er){
-        //     data = new Response<IData>(data.er);
-        // }else{
-        //     data = new Response<IData>(data.er, new Data(data.body));
-        // }
+        /*
+        if (data.er) {
+            data = new Response<IData>(data.er);
+        } else {
+            data = new Response<IData>(data.er, new Data(data.body));
+        }
+        */
 
         /* ---- 如果有数据处理写在下面 ---- */
 
@@ -40,11 +42,12 @@ class WebTokenLogin extends ApiBasic<IOptions, IData> {
 }
 
 /** 对IData接口的实现 */
-// class Data implements IData{
-//
-//     /** 构造函数 */
-//     constructor(body:any) {
-//     }
-// }
+/*
+class Data implements IData {
+
+    constructor(body: any) {
+    }
+}
+*/
 
 export default new WebTokenLogin().run;

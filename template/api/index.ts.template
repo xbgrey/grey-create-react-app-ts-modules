@@ -9,21 +9,23 @@ import IOptions from './IOptions';
  * 这里位置描述下api的内容是什么
  * 如果数据有时间格式，统一转换成 moment 对象
  */
-class WebTokenLogin extends ApiBasic<IOptions, IData> {
+class {{name}} extends ApiBasic<IOptions, IData> {
 
     /** api逻辑的实现入口 */
     public async api(option: IOptions): Promise<Response<IData>> {
 
-        const req: Request = new Request(CallType.POST, Urls.webTokenLogin, this.working(option));
+        const req: Request = new Request(CallType.POST, Urls./*API地址*/, this.working(option));
 
         let data: Response<IData> = await this.call(req);
 
         // 去掉注释开启数据加工
-        // if(data.er){
-        //     data = new Response<IData>(data.er);
-        // }else{
-        //     data = new Response<IData>(data.er, new Data(data.body));
-        // }
+        /*
+        if (data.er) {
+            data = new Response<IData>(data.er);
+        } else {
+            data = new Response<IData>(data.er, new Data(data.body));
+        }
+        */
 
         /* ---- 如果有数据处理写在下面 ---- */
 
@@ -40,11 +42,12 @@ class WebTokenLogin extends ApiBasic<IOptions, IData> {
 }
 
 /** 对IData接口的实现 */
-// class Data implements IData{
-//
-//     /** 构造函数 */
-//     constructor(body:any) {
-//     }
-// }
+/*
+class Data implements IData {
 
-export default new WebTokenLogin().run;
+    constructor(body: any) {
+    }
+}
+*/
+
+export default new {{name}}().run;
