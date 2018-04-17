@@ -49,7 +49,6 @@ npm run cre [模块类型] [目录] [模块名称] <br>
   * entry（类似条目的配置）
     * constant（全站用的常量）
     * Routes（路由的跟配置）
-  * frame （全站底层类）
   * redux （全局状态管理的扩展）
   * routes (全局路由管理)
   * utils （全站和业务无关的工具类）
