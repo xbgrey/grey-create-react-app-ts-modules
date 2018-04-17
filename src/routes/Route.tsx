@@ -13,27 +13,21 @@ function getTree(): any {
     const rootNodeTree: INodeTree[] = [];
 
     getNodeChilds(ROOT_NAME).forEach((value: INode) => {
-        rootNodeTree.push({
-            nodeName: value.route.nodeName,
+        const item: INodeTree = {
             parent: value.parent,
-            title: value.route.title,
-            path: value.route.path,
+            route: value.route,
             childList: []
-        });
-    });
-
-    rootNodeTree.forEach((value: INodeTree) => {
-        addChildList(value);
+        };
+        addChildList(item);
+        rootNodeTree.push(item);
     });
 
     function addChildList(nodeTree: INodeTree) {
         const nodeTreeList: INodeTree[] = [];
-        getNodeChilds(nodeTree.nodeName).forEach((value: INode) => {
+        getNodeChilds(nodeTree.route.nodeName).forEach((value: INode) => {
             nodeTreeList.push({
-                nodeName: value.route.nodeName,
                 parent: value.parent,
-                title: value.route.title,
-                path: value.route.path,
+                route: value.route,
                 childList: []
             });
         });

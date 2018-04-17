@@ -45,14 +45,14 @@ export default abstract class AipBasic<O, D> {
 
     /** 请求头（全局） */
     private get domain(): string {
-        const { config, env } = MyStore.instance.getState();
+        const { env } = MyStore.instance.getState();
         switch (env.NODE_ENV) {
             case NodeEnvType.开发环境:
-                return config.rootConfig.DEV_URI;
+                return '';
             case NodeEnvType.生产环境:
-                return config.rootConfig.API_URI;
+                return '';
             case NodeEnvType.测试环境:
-                return config.rootConfig.TEST_URI;
+                return '';
             default:
                 console.error('[api]环境变量异常', env);
                 return '';

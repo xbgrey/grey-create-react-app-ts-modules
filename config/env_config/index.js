@@ -1,5 +1,5 @@
 let env;
-switch (process.argv[3]) {
+switch (process.argv[2]) {
     case 'debug':
         env = require('./debug');
         break;
