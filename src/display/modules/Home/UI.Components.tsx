@@ -4,6 +4,7 @@ import { connect } from 'src/redux';
 import ReduxState, { } from 'src/redux/ReduxState';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
+import { Button } from 'antd';
 
 class UIComponents extends UIBasic<IProps, ModulesState> {
 
@@ -16,7 +17,7 @@ class UIComponents extends UIBasic<IProps, ModulesState> {
         const { } = this.props; // 获取你的props数据
         return (
             <div>
-                你的组件
+                <Button>你的组件</Button>
             </div>
         );
     }
