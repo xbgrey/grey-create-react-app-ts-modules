@@ -7,7 +7,7 @@ const parentName: string = ; // 路由的跟节点；
 
 Route.addNode(
     parentName,
-    { nodeName: 'demo', path: '/demo', component: require('./Demo') },
+    { nodeName: 'demo', path: '/demo', component: require('./Demo').default },
 );
 
 export default {
