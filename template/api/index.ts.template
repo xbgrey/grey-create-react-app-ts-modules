@@ -7,7 +7,6 @@ import IOptions from './IOptions';
 
 /**
  * 这里位置描述下api的内容是什么
- * 如果数据有时间格式，统一转换成 moment 对象
  */
 class {{name}} extends ApiBasic<IOptions, IData> {
 

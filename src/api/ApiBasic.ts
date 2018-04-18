@@ -4,13 +4,13 @@ import { Agent, Request } from 'kts-scaffold-framework/server';
 import { reducers } from 'src/redux';
 import { NodeEnvType } from 'src/entry/constant';
 
-export default abstract class AipBasic<O, D> {
+export default abstract class ApiBasic<O, D> {
 
     constructor() {
         this.api = this.api.bind(this);
     }
 
-    /** 像服务器发送请求 */
+    /** 向服务器发送请求 */
     public call = async (request: Request, mock: boolean = false): Promise<any> => {
         
         request = {

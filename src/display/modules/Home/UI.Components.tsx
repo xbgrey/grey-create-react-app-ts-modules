@@ -11,7 +11,7 @@ class UIComponents extends UIBasic<IProps, ModulesState> {
     constructor(props: IProps) {
         super(props, ModulesAction);
     }
-    
+
     render() {
         const { } = this.props; // 获取你的props数据
         return (
@@ -32,5 +32,5 @@ interface IProps extends IReduxStatePart, IPropsBasic {
 
 // 对IReduxStatePart的实现并绑定到组件上
 export default connect((state: ReduxState): IReduxStatePart => ({
-    
+
 }))(UIComponents);
