@@ -49,6 +49,16 @@ export default class MyStore {
     }
 
     /**
+     * 获取一个动作代理
+     * @param type 动作类型
+     */
+    public getDispatchProxy = (type: EmptyActionCreator): (value: any, callBack?: () => void) => void => {
+        return (value: any, callBack?: () => void) => {
+            this.dispatch(type, value, callBack);
+        };
+    }
+
+    /**
      * 返回应用当前的 state 树
      */
     public getState(): ReduxState {
