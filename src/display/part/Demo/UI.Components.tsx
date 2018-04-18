@@ -1,10 +1,25 @@
 import * as React from 'react';
 import { UIBasic, IPropsBasic } from 'kts-scaffold-framework/modules';
-import { connect, ReduxState } from 'src/redux';
+import { connect } from 'src/redux';
+import ReduxState, { } from 'src/redux/ReduxState';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 
-class UIComponents extends UIBasic<IProps, ModulesState> {
+/** 全局数据片段数据接口 */
+interface IReduxStatePart {
+    
+}
+
+/** 组建的props接口 */
+interface IProps extends IReduxStatePart, IPropsBasic {
+
+}
+
+/** 绑定全局数据到props */
+@connect((state: ReduxState): IReduxStatePart => ({
+
+}))
+export default class UIComponents extends UIBasic<IProps, ModulesState> {
 
     /** 构造函数 */
     constructor(props: IProps) {
@@ -20,16 +35,3 @@ class UIComponents extends UIBasic<IProps, ModulesState> {
         );
     }
 }
-
-/** 全局数据片段数据接口 */
-interface IReduxStatePart {
-}
-
-/** 组建的props接口 */
-interface IProps extends IReduxStatePart, IPropsBasic {
-}
-
-// 对IReduxStatePart的实现并绑定到组件上
-export default connect((state: ReduxState): IReduxStatePart => ({
-    
-}))(UIComponents);

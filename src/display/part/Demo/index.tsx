@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ModulesBasic, IPropsBasic } from 'kts-scaffold-framework/modules';
-import { connect, ReduxState } from 'src/redux';
+import { connect } from 'src/redux';
+import ReduxState, { } from 'src/redux/ReduxState';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 import ModulesEvent from './Modules.Event';
@@ -8,7 +9,21 @@ import UIComponents from './UI.Components';
 
 const css = require('./index.scss');
 
-class Demo extends ModulesBasic<IProps, ModulesState> {
+/** 全局数据片段数据接口 */
+interface IReduxStatePart {
+    
+}
+
+/** 组建的props接口 */
+interface IProps extends IReduxStatePart, IPropsBasic {
+
+}
+
+/** 绑定全局数据到props */
+@connect((state: ReduxState): IReduxStatePart => ({
+
+}))
+export default class Demo extends ModulesBasic<IProps, ModulesState> {
 
     // 当前模块接收或者发送的消息
     public static readonly Event = ModulesEvent;
@@ -31,15 +46,3 @@ class Demo extends ModulesBasic<IProps, ModulesState> {
         );
     }
 }
-
-/** 全局状态数据片段接口 */
-interface IReduxStatePart {
-}
-
-/** 组建的props接口 */
-interface IProps extends IReduxStatePart, IPropsBasic {
-}
-
-export default connect((state: ReduxState): IReduxStatePart => ({
-    /** 对IReduxStatePart接口的实现 */
-}))(Demo);

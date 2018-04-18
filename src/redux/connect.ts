@@ -8,7 +8,7 @@ function connectIndex(reduxStatePart: (state: ReduxState) => any) {
             reduxStatePart(state)
         };
     };
-    return connect(s2p);
+    return (dom): any => { return connect(s2p)(dom); };
 }
 
 export default connectIndex;

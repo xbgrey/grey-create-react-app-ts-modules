@@ -8,7 +8,21 @@ import UIComponents from './UI.Components';
 
 const css = require('./index.scss');
 
-class {{name}} extends ModulesBasic<IProps, ModulesState> {
+/** 全局数据片段数据接口 */
+interface IReduxStatePart {
+    
+}
+
+/** 组建的props接口 */
+interface IProps extends IReduxStatePart, IPropsBasic {
+
+}
+
+/** 绑定全局数据到props */
+@connect((state: ReduxState): IReduxStatePart => ({
+
+}))
+export default class {{name}} extends ModulesBasic<IProps, ModulesState> {
 
     /** 组建状态 */
     public state: ModulesState = new ModulesState();
@@ -28,15 +42,3 @@ class {{name}} extends ModulesBasic<IProps, ModulesState> {
         );
     }
 }
-
-/** 全局状态数据片段接口 */
-interface IReduxStatePart {
-}
-
-/** 组建的props接口 */
-interface IProps extends IReduxStatePart, IPropsBasic {
-}
-
-export default connect((state: ReduxState): IReduxStatePart => ({
-    /** 对IReduxStatePart接口的实现 */
-}))({{name}});

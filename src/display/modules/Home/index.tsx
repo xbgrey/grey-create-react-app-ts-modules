@@ -1,14 +1,28 @@
 import * as React from 'react';
 import { ModulesBasic, IPropsBasic } from 'kts-scaffold-framework/modules';
 import { connect } from 'src/redux';
-import ReduxState, { IRoutesTree } from 'src/redux/ReduxState';
+import ReduxState, { } from 'src/redux/ReduxState';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 import UIComponents from './UI.Components';
 
 const css = require('./index.scss');
 
-class Home extends ModulesBasic<IProps, ModulesState> {
+/** 全局数据片段数据接口 */
+interface IReduxStatePart {
+    
+}
+
+/** 组建的props接口 */
+interface IProps extends IReduxStatePart, IPropsBasic {
+
+}
+
+/** 绑定全局数据到props */
+@connect((state: ReduxState): IReduxStatePart => ({
+
+}))
+export default class Home extends ModulesBasic<IProps, ModulesState> {
 
     /** 组建状态 */
     public state: ModulesState = new ModulesState();
@@ -28,16 +42,3 @@ class Home extends ModulesBasic<IProps, ModulesState> {
         );
     }
 }
-
-/** 全局状态数据片段接口 */
-interface IReduxStatePart {
-    routes: IRoutesTree[];
-}
-
-/** 组建的props接口 */
-interface IProps extends IReduxStatePart, IPropsBasic {
-}
-
-export default connect((state: ReduxState): IReduxStatePart => ({
-    routes: state.routes
-}))(Home);
