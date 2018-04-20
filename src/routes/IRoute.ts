@@ -9,4 +9,7 @@ export default interface IRoute extends RouteProps {
 
     /** 节点名称 */
     nodeName: string;
+
+    /** 节点全称 */
+    pathname?: string[];
 }

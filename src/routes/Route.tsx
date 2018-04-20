@@ -13,6 +13,7 @@ function getTree(): any {
     const rootNodeTree: INodeTree[] = [];
 
     getNodeChilds(ROOT_NAME).forEach((value: INode) => {
+        setNodePathname(value);
         const item: INodeTree = {
             parent: value.parent,
             route: value.route,
@@ -25,6 +26,7 @@ function getTree(): any {
     function addChildList(nodeTree: INodeTree) {
         const nodeTreeList: INodeTree[] = [];
         getNodeChilds(nodeTree.route.nodeName).forEach((value: INode) => {
+            setNodePathname(value);
             nodeTreeList.push({
                 parent: value.parent,
                 route: value.route,
@@ -40,6 +42,33 @@ function getTree(): any {
     }
 
     return rootNodeTree;
+}
+
+/**
+ * 设置制定节点的 pathname
+ * @param value 制定节点
+ */
+function setNodePathname(value: INode) {
+    value.route.pathname = addPathname(value.route.pathname, value.route.path);
+
+    let operate = value;
+    for (; operate.parent !== ROOT_NAME && operate.route.path.indexOf('*') === 0;) {
+        operate = getNode(operate.parent);
+        value.route.pathname = addPathname(value.route.pathname, operate.route.path);
+    }
+
+    function addPathname(pathname: string[], path: string): string[] {
+        pathname = pathname ? pathname.slice() : [];
+
+        const pathArr: string[] = path.split('/');
+        for (let i = pathArr.length - 1; i >= 0; i--) {
+            if (pathArr[i]) {
+                pathname.unshift(pathArr[i].replace(/\*/g, ''));
+            }
+        }
+
+        return pathname;
+    }
 }
 
 /**
@@ -69,6 +98,60 @@ function getNodeChilds(name: string): INode[] {
     return sum;
 }
 
+/** 
+ * 获取当前状态的跟节点
+ * @param pathname 当前状态全称
+ */
+function getNodePathname(pathname: string): INode {
+    let pathnameAr: string[] = pathname.substring(1).split('/');
+    let selected: INode[] = [];
+    let optional: INode[] = [];
+
+    routelist.forEach((value: INode) => {
+        if (value.route.pathname.length === pathnameAr.length) {
+            selected.push(value);
+        }
+    });
+
+    if (selected.length === 1) {
+        return selected[0];
+    }
+
+    for (let i = pathnameAr.length - 1; i >= 0; i--) {
+        optional = selected.slice();
+        selected = [];
+
+        optional.forEach((node: INode) => {
+            if (node.route.pathname[i] === pathnameAr[i] || node.route.pathname[i].indexOf(':') === 0) {
+                selected.push(node);
+            }
+        });
+
+        if (selected.length === 1) {
+            return selected[0];
+        }
+    }
+
+    return null;
+}
+
+/** 获取渲染节点数组 */
+function getLevel(pathname: string): INode[] {
+    debugger;
+    let root = getNodePathname(pathname);
+    let level: INode[] = [];
+
+    if (root) {
+        level = [root];
+        for (; root.parent !== ROOT_NAME;) {
+            root = getNode(root.parent);
+            level.unshift(root);
+        }
+    }
+
+    return level;
+}
+
 /**
  * 获取路由的React结构
  * @param name 节点名称
@@ -82,7 +165,7 @@ function getChildReact(name: string, index?: string): JSX.Element[] {
     }
 
     if (index) {
-        routeReact.push(<Route key="index" render={() => <Redirect to={index} />} />);
+        routeReact.push(<Route key="@@index" render={() => <Redirect to={index} />} />);
     }
 
     return routeReact.map((value) => value);
@@ -126,6 +209,6 @@ export default {
     getNode,
     getNodeChilds,
     getChildReact,
-    getTree,
+    getLevel,
     ROOT_NAME,
 };
