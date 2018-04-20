@@ -40,7 +40,7 @@ module.exports = function (modulePath, name) {
     writeTemplate(modulePath, 'index.scss', process);
     writeTemplate(modulePath, 'index.tsx', process);
     writeTemplate(modulePath, 'Modules.Action.ts', process);
-    writeTemplate(modulePath, 'Modules.Config.tsx', process);
+    // writeTemplate(modulePath, 'Modules.Config.tsx', process);
     writeTemplate(modulePath, 'Modules.State.ts', process);
     writeTemplate(modulePath, 'Modules.Event.ts', process);
     writeTemplate(modulePath, 'UI.Components.tsx', process);

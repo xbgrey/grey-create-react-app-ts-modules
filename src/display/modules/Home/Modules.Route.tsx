@@ -1,9 +1,6 @@
-/*
-需要配置路由请打开配置，如果不需要路由请删除本文件
-
 import { Route } from 'src/routes';
 
-const parentName: string = ; // 路由的跟节点；
+const parentName: string = 'home'; // 路由的跟节点；
 
 Route.addNode(
     parentName,
@@ -19,4 +16,3 @@ export default {
 export {
     Switch
 } from 'react-router-dom';
-*/

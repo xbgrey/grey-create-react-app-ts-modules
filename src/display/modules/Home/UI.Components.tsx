@@ -4,7 +4,6 @@ import { connect } from 'src/redux';
 import ReduxState, { } from 'src/redux/ReduxState';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
-import { FormComponentProps } from 'antd/lib/form';
 import { Form, Input } from 'antd';
 
 /** 全局数据片段数据接口 */
@@ -13,7 +12,7 @@ interface IReduxStatePart {
 }
 
 /** 组建的props接口 */
-interface IProps extends IReduxStatePart, IPropsBasic, FormComponentProps {
+interface IProps extends IReduxStatePart, IPropsBasic {
 
 }
 

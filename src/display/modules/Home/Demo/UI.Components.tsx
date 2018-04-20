@@ -5,8 +5,6 @@ import ReduxState, { } from 'src/redux/ReduxState';
 import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 
-const css = require('./index.scss');
-
 /** Redux接口 */
 interface IReduxStatePart {
     

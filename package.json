@@ -1,5 +1,5 @@
 {
-  "name": "grey-create-react-app-ts",
+  "name": "kts-scaffold",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -106,12 +106,7 @@
       "jsx",
       "json",
       "node"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "/Users/xubo/Documents/work/grey-create-react-app-ts/tsconfig.test.json"
-      }
-    }
+    ]
   },
   "babel": {
     "presets": [

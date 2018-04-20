@@ -6,47 +6,19 @@ import IData from './IData';
 import IOptions from './IOptions';
 
 /**
- * 这里位置描述下api的内容是什么
+ * WebTokenLogin
  */
 class WebTokenLogin extends ApiBasic<IOptions, IData> {
 
-    /** api逻辑的实现入口 */
+    /** 入口 */
     public async api(option: IOptions): Promise<Response<IData>> {
 
-        const req: Request = new Request(CallType.POST, Urls.webTokenLogin, this.working(option));
+        const req: Request = new Request(CallType.POST, Urls.webTokenLogin, option);
 
         let data: Response<IData> = await this.call(req);
 
-        // 去掉注释开启数据加工
-        /*
-        if (data.er) {
-            data = new Response<IData>(data.er);
-        } else {
-            data = new Response<IData>(data.er, new Data(data.body));
-        }
-        */
-
-        /* ---- 如果有数据处理写在下面 ---- */
-
         return data;
     }
-
-    /** 
-     * 对入惨加工
-     * @param option 原始如参数
-     */
-    private working(option: IOptions): any {
-        return option;
-    }
 }
-
-/** 对IData接口的实现 */
-/*
-class Data implements IData {
-
-    constructor(body: any) {
-    }
-}
-*/
 
 export default new WebTokenLogin().run;
