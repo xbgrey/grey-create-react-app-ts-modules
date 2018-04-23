@@ -58,7 +58,7 @@
   },
   "scripts": {
     "start": "node scripts/start",
-    "build": "node scripts/",
+    "build": "node scripts/build",
     "cre": "node template"
   },
   "devDependencies": {
