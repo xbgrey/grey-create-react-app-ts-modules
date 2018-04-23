@@ -4,6 +4,10 @@ switch (process.argv[2]) {
         env = require('./debug');
         break;
 
+    case 'dev':
+        env = require('./debug');
+        break;
+
     case 'production':
         env = require('./production');
         break;
