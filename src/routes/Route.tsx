@@ -175,7 +175,7 @@ function getChildReact(name: string, index?: string): JSX.Element[] {
  * @param name 节点名称
  * @param props 扩展属性
  */
-function getChildRoute(name: string, props: any): JSX.Element {
+function getChildRoute(name: string, props: any = {}): JSX.Element {
     const node: INode = getNode(name);
     return <Route {...node.route} {...props} />;
 }
