@@ -137,7 +137,6 @@ function getNodePathname(pathname: string): INode {
 
 /** 获取渲染节点数组 */
 function getLevel(pathname: string): INode[] {
-    debugger;
     let root = getNodePathname(pathname);
     let level: INode[] = [];
 
@@ -169,6 +168,24 @@ function getChildReact(name: string, index?: string): JSX.Element[] {
     }
 
     return routeReact.map((value) => value);
+}
+
+/**
+ * 获取路由的React结构 <Route>
+ * @param name 节点名称
+ * @param props 扩展属性
+ */
+function getChildRoute(name: string, props: any): JSX.Element {
+    const node: INode = getNode(name);
+    return <Route {...node.route} {...props} />;
+}
+
+/**
+ * 获取路由的默认首页 <Route>
+ * @param index 默认首页
+ */
+function getChildRouteIndex(index: string): JSX.Element {
+    return <Route render={() => <Redirect to={index} />} />;
 }
 
 /** 删除节点 */
@@ -209,6 +226,8 @@ export default {
     getNode,
     getNodeChilds,
     getChildReact,
+    getChildRoute,
+    getChildRouteIndex,
     getLevel,
     ROOT_NAME,
 };
