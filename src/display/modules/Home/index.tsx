@@ -37,7 +37,7 @@ export default class Home extends ModulesBasic<IProps, ModulesState> {
     render() {
         const { } = this.props; // 获取你的props数据
         return (
-            <div className={css.modules}>
+            <div key={this.state.key} className={css.modules}>
                 <UIComponents />
                 <Switch>{ModulesRoute.getChildReact('/demo')}</Switch>
             </div>
