@@ -34,7 +34,7 @@ yarn cre [模块类型] [目录] [模块名称] <br>
 npm run cre [模块类型] [目录] [模块名称] <br>
 [模块类型]:
 * m 显示模块  默认路径（src/display/modules）<br>
-* a api模块  默认路径（src/api/system）<br>
+* a api模块  默认路径（src/api）<br>
 * p 代码片段  默认路径（src/display/part）<br>
 
 例子

@@ -11,6 +11,7 @@ const css = require('./index.scss');
 
 /** 全局数据片段数据接口 */
 interface IReduxStatePart {
+    cToken: string;
 }
 
 /** 组建的props接口 */
@@ -19,6 +20,7 @@ interface IProps extends IReduxStatePart, IPropsBasic {
 
 /** 绑定全局数据到props */
 @connect((state: ReduxState): IReduxStatePart => ({
+    cToken: state.user.cToken
 }))
 export default class Home extends ModulesBasic<IProps, ModulesState> {
 

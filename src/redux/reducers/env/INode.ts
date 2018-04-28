@@ -10,4 +10,7 @@ export default interface INode {
 
     /** 是否开启mock数据 */
     IS_MOCK: boolean;
+
+    /** API 网关 */
+    DURL: string;
 }

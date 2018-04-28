@@ -8,7 +8,7 @@ import { Form, Input } from 'antd';
 
 /** 全局数据片段数据接口 */
 interface IReduxStatePart {
-    
+
 }
 
 /** 组建的props接口 */
@@ -26,12 +26,12 @@ export default class UIComponents extends UIBasic<IProps, ModulesState> {
     constructor(props: IProps) {
         super(props, ModulesAction);
     }
-    
+
     render() {
         const { form } = this.props; // 获取你的props数据
         const { getFieldDecorator } = form;
         return (
-            <div>
+            <Form>
                 <Form.Item>
                     {getFieldDecorator('loginName', {
                         rules: [
@@ -47,8 +47,7 @@ export default class UIComponents extends UIBasic<IProps, ModulesState> {
                         ],
                     })(<Input size="large" type="password" placeholder="请输入密码" />)}
                 </Form.Item>
-            </div>
+            </Form>
         );
     }
 }
- 

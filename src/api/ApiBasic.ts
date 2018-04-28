@@ -7,11 +7,12 @@ import { message } from 'antd';
 export default abstract class ApiBasic<O, D> {
 
     constructor() {
-        this.api = this.api.bind(this);
+        this.api  = this.api.bind(this);
+        this.call = this.api.bind(this);
     }
 
     /** 向服务器发送请求 */
-    public call = async (request: Request, mock: boolean = false): Promise<any> => {
+    public async call (request: Request, mock: boolean = false): Promise<any> {
 
         const { user } = MyStore.instance.getState();
         request.options.Authorization = user.cToken;
@@ -60,7 +61,7 @@ export default abstract class ApiBasic<O, D> {
      * 执行api
      * @param option api 入参
      */
-    public run = async (target: any, option: O, ): Promise<Response<D>> => {
+    public run = async (target: any, option: O): Promise<Response<D>> => {
         return await this.api(option);
     }
 
@@ -81,7 +82,7 @@ export default abstract class ApiBasic<O, D> {
 
     /** 请求头（全局） */
     private get domain(): string {
-        const { user } = MyStore.instance.getState();
-        return user.zoneUrl;
+        const { user, env } = MyStore.instance.getState();
+        return env.DURL || user.zoneUrl;
     }
 }
