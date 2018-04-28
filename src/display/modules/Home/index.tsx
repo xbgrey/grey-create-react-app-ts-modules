@@ -11,17 +11,14 @@ const css = require('./index.scss');
 
 /** 全局数据片段数据接口 */
 interface IReduxStatePart {
-
 }
 
 /** 组建的props接口 */
 interface IProps extends IReduxStatePart, IPropsBasic {
-
 }
 
 /** 绑定全局数据到props */
 @connect((state: ReduxState): IReduxStatePart => ({
-
 }))
 export default class Home extends ModulesBasic<IProps, ModulesState> {
 
@@ -35,7 +32,6 @@ export default class Home extends ModulesBasic<IProps, ModulesState> {
 
     // 这里尽量只调用UI组件
     render() {
-        const { } = this.props; // 获取你的props数据
         return (
             <div key={this.state.key} className={css.modules}>
                 <UIComponents />
