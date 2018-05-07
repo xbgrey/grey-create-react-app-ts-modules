@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ModulesBasic, IPropsBasic } from 'kts-scaffold-framework/modules';
+import { ModulesBasic, IPropsBasic, ModulesRoot } from 'kts-scaffold-framework/modules';
 import { connect } from 'src/redux';
 import ReduxState, { } from 'src/redux/ReduxState';
 import ModulesState from './Modules.State';
@@ -35,10 +35,12 @@ export default class Home extends ModulesBasic<IProps, ModulesState> {
     // 这里尽量只调用UI组件
     render() {
         return (
-            <div key={this.state.key} className={css.modules}>
-                <UIComponents />
-                <Switch>{ModulesRoute.getChildReact('/demo')}</Switch>
-            </div>
+            <ModulesRoot action={ModulesAction}>
+                <div key={this.state.key} className={css.modules}>
+                    <UIComponents />
+                    <Switch>{ModulesRoute.getChildReact('/demo')}</Switch>
+                </div>
+            </ModulesRoot>
         );
     }
 }
