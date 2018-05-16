@@ -6,6 +6,7 @@ import ModulesState from './Modules.State';
 import ModulesAction from './Modules.Action';
 import ModulesRoute, { Switch } from './Modules.Route';
 import UIComponents from './UI.Components';
+import { Button } from 'antd';
 
 const css = require('./index.scss');
 
@@ -34,13 +35,20 @@ export default class Home extends ModulesBasic<IProps, ModulesState> {
 
     // 这里尽量只调用UI组件
     render() {
+        const { node1 } = this.state;
         return (
             <ModulesRoot action={ModulesAction}>
                 <div key={this.state.key} className={css.modules}>
+                    <p>{node1.text}</p>
                     <UIComponents />
+                    <Button onClick={this.onClickMi} >点我</Button>
                     <Switch>{ModulesRoute.getChildReact('/demo')}</Switch>
                 </div>
             </ModulesRoot>
         );
+    }
+
+    private onClickMi = () => {
+        ModulesAction.setText('xxxxx');
     }
 }
